@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fonctions de référence — Seconde · MathCoach</title>
+    <meta name="description" content="Cours, exercices et quiz sur les fonctions de référence en Seconde : fonction affine, carré, inverse et racine carrée.">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- ===== NAVBAR ===== -->
+    <nav class="chapter-navbar">
+        <div class="container chapter-nav-inner">
+            <a href="../index.html" class="logo">
+                <span class="logo-icon">&#960;</span>
+                <span class="logo-text">MathCoach</span>
+            </a>
+            <nav class="breadcrumb" aria-label="Fil d'Ariane">
+                <a href="../index.html">Accueil</a>
+                <span class="breadcrumb-sep">›</span>
+                <a href="#">Seconde</a>
+                <span class="breadcrumb-sep">›</span>
+                <span class="breadcrumb-current">Fonctions de référence</span>
+            </nav>
+            <div class="chapter-nav-actions">
+                <a href="../index.html#cours" class="btn btn-ghost btn-sm">← Tous les cours</a>
+                <a href="#" class="btn btn-primary btn-sm">MathCoach+</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <header class="chapter-hero">
+        <div class="container">
+            <div class="chapter-hero-meta">
+                <span class="badge-niveau">2nde</span>
+                <span class="badge-gratuit">
+                    <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>
+                    Gratuit
+                </span>
+            </div>
+            <h1>Fonctions de référence</h1>
+            <p class="chapter-hero-desc">
+                Découvre les quatre grandes familles de fonctions que tu croiseras tout au long de ta scolarité :
+                la fonction affine, la fonction carré, la fonction inverse et la fonction racine carrée.
+            </p>
+            <div class="chapter-hero-stats">
+                <span class="ch-stat">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    4 fonctions au programme
+                </span>
+                <span class="ch-stat">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+                    ~45 min de cours
+                </span>
+                <span class="ch-stat">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline></svg>
+                    6 exercices
+                </span>
+                <span class="ch-stat">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M9 11l3 3L22 4"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"></path></svg>
+                    8 questions de quiz
+                </span>
+            </div>
+        </div>
+    </header>
+
+    <!-- ===== ONGLETS ===== -->
+    <div class="chapter-tabs-bar">
+        <div class="container">
+            <div class="chapter-tabs-inner">
+                <button class="tab-btn active" data-tab="cours">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg>
+                    Cours
+                </button>
+                <button class="tab-btn" data-tab="exercices">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14.5 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V7.5L14.5 2z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+                    Exercices
+                    <span class="tab-count">6</span>
+                </button>
+                <button class="tab-btn" data-tab="quiz">
+                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+                    Quiz
+                    <span class="tab-count">8</span>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ===== CORPS ===== -->
+    <main class="chapter-body">
+        <div class="container">
+
+            <!-- ==================== COURS ==================== -->
+            <div id="tab-cours" class="tab-panel active">
+                <div class="cours-layout">
+
+                    <!-- Sommaire -->
+                    <aside class="cours-sommaire">
+                        <h4>Sommaire</h4>
+                        <nav class="sommaire-list">
+                            <a href="#section-intro">Introduction</a>
+                            <a href="#section-affine">1. Fonction affine</a>
+                            <a href="#section-carre">2. Fonction carré</a>
+                            <a href="#section-inverse">3. Fonction inverse</a>
+                            <a href="#section-racine">4. Fonction racine carrée</a>
+                            <a href="#section-synthese">Synthèse</a>
+                        </nav>
+                    </aside>
+
+                    <!-- Contenu -->
+                    <div class="cours-content">
+
+                        <!-- Introduction -->
+                        <div class="cours-section" id="section-intro">
+                            <h2 class="cours-section-title">
+                                Introduction
+                            </h2>
+                            <div class="box box-definition">
+                                <div class="box-label">Définition</div>
+                                <p>
+                                    Une <strong>fonction</strong> est une correspondance qui associe à chaque réel <em>x</em>
+                                    d'un ensemble de départ (le <strong>domaine de définition</strong>) un unique réel noté <em>f(x)</em>.
+                                </p>
+                            </div>
+                            <p style="font-size:0.9375rem; color:var(--color-text-secondary); line-height:1.7; margin-bottom:var(--space-lg)">
+                                En Seconde, le programme distingue quatre <strong>fonctions de référence</strong> : la fonction affine,
+                                la fonction carré, la fonction inverse et la fonction racine carrée.
+                                Connaître leur expression algébrique, leur courbe représentative et leurs
+                                propriétés est indispensable pour toute la suite du lycée.
+                            </p>
+                        </div>
+
+                        <!-- 1. Fonction affine -->
+                        <div class="cours-section" id="section-affine">
+                            <h2 class="cours-section-title">
+                                <span class="cours-section-num">1</span>
+                                Fonction affine
+                            </h2>
+
+                            <div class="box box-definition">
+                                <div class="box-label">Définition</div>
+                                <p>
+                                    La <strong>fonction affine</strong> est définie sur ℝ par :
+                                </p>
+                                <p class="math-formula">f(x) = ax + b</p>
+                                <p>
+                                    où <em>a</em> est le <strong>coefficient directeur</strong> (ou pente)
+                                    et <em>b</em> est l'<strong>ordonnée à l'origine</strong>.
+                                </p>
+                                <p style="margin-top:var(--space-sm)">
+                                    Lorsque <em>b = 0</em>, on parle de <strong>fonction linéaire</strong> :
+                                    <span class="math-formula">f(x) = ax</span>
+                                </p>
+                            </div>
+
+                            <div class="box box-propriete">
+                                <div class="box-label">Propriétés</div>
+                                <ul>
+                                    <li>Sa représentation graphique est une <strong>droite</strong>.</li>
+                                    <li>Si <em>a &gt; 0</em> : la fonction est <strong>strictement croissante</strong> sur ℝ.</li>
+                                    <li>Si <em>a &lt; 0</em> : la fonction est <strong>strictement décroissante</strong> sur ℝ.</li>
+                                    <li>Si <em>a = 0</em> : la fonction est <strong>constante</strong> (droite horizontale).</li>
+                                    <li>La droite coupe l'axe des ordonnées en <em>(0 ; b)</em>.</li>
+                                    <li>La droite coupe l'axe des abscisses en <em>(−b/a ; 0)</em> si <em>a ≠ 0</em>.</li>
+                                </ul>
+                            </div>
+
+                            <div class="box box-exemple">
+                                <div class="box-label">Exemple</div>
+                                <p>
+                                    Soit <span class="math-formula">f(x) = 2x − 3</span>.
+                                </p>
+                                <ul>
+                                    <li>Coefficient directeur : <em>a = 2</em> → la droite monte de 2 pour 1 vers la droite.</li>
+                                    <li>Ordonnée à l'origine : <em>b = −3</em> → la droite coupe l'axe des ordonnées en <em>(0 ; −3)</em>.</li>
+                                    <li>f est <strong>croissante</strong> sur ℝ.</li>
+                                    <li>f(x) = 0 ⟺ 2x − 3 = 0 ⟺ x = 3/2 : la droite coupe l'axe des abscisses en <em>(1,5 ; 0)</em>.</li>
+                                </ul>
+                            </div>
+                        </div>
+
+                        <!-- 2. Fonction carré -->
+                        <div class="cours-section" id="section-carre">
+                            <h2 class="cours-section-title">
+                                <span class="cours-section-num">2</span>
+                                Fonction carré
+                            </h2>
+
+                            <div class="box box-definition">
+                                <div class="box-label">Définition</div>
+                                <p>La <strong>fonction carré</strong> est définie sur ℝ par :</p>
+                                <p class="math-formula">f(x) = x²</p>
+                            </div>
+
+                            <div class="box box-propriete">
+                                <div class="box-label">Propriétés</div>
+                                <ul>
+                                    <li>Sa courbe représentative est une <strong>parabole</strong> de sommet <em>O(0 ; 0)</em>.</li>
+                                    <li>Elle est <strong>paire</strong> : f(−x) = f(x) → symétrie par rapport à l'axe des ordonnées.</li>
+                                    <li><strong>Décroissante</strong> sur ]−∞ ; 0] et <strong>croissante</strong> sur [0 ; +∞[.</li>
+                                    <li>Minimum en x = 0 : f(0) = 0.</li>
+                                    <li>f(x) ≥ 0 pour tout réel x (toujours positive ou nulle).</li>
+                                </ul>
+                            </div>
+
+                            <div class="box box-exemple">
+                                <div class="box-label">Exemple</div>
+                                <p>
+                                    f(3) = 9 &nbsp;|&nbsp; f(−3) = 9 &nbsp;|&nbsp; f(0) = 0
+                                </p>
+                                <p style="margin-top:var(--space-sm)">
+                                    f(x) = 4 ⟺ x² = 4 ⟺ x = 2 ou x = −2.
+                                </p>
+                            </div>
+
+                            <div class="box box-attention">
+                                <div class="box-label">⚠ Attention</div>
+                                <p>
+                                    √(x²) = |x| et non x. Par exemple : √(9) = 3 ≠ −3.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 3. Fonction inverse -->
+                        <div class="cours-section" id="section-inverse">
+                            <h2 class="cours-section-title">
+                                <span class="cours-section-num">3</span>
+                                Fonction inverse
+                            </h2>
+
+                            <div class="box box-definition">
+                                <div class="box-label">Définition</div>
+                                <p>La <strong>fonction inverse</strong> est définie sur ℝ \ {0} par :</p>
+                                <p class="math-formula">f(x) = 1/x</p>
+                                <p>Son domaine de définition est <strong>D = ℝ \ {0}</strong> car on ne peut pas diviser par zéro.</p>
+                            </div>
+
+                            <div class="box box-propriete">
+                                <div class="box-label">Propriétés</div>
+                                <ul>
+                                    <li>Sa courbe représentative est une <strong>hyperbole</strong> à deux branches.</li>
+                                    <li>Elle est <strong>impaire</strong> : f(−x) = −f(x) → symétrie par rapport à l'origine O.</li>
+                                    <li><strong>Strictement décroissante</strong> sur ]−∞ ; 0[ et sur ]0 ; +∞[.</li>
+                                    <li>L'axe des abscisses et l'axe des ordonnées sont des <strong>asymptotes</strong> de la courbe.</li>
+                                    <li>La courbe est dans les quadrants 1 et 3 (signes identiques pour x et f(x)).</li>
+                                </ul>
+                            </div>
+
+                            <div class="box box-exemple">
+                                <div class="box-label">Exemple</div>
+                                <p>
+                                    f(2) = 0,5 &nbsp;|&nbsp; f(−4) = −0,25 &nbsp;|&nbsp; f(1) = 1
+                                </p>
+                                <p style="margin-top:var(--space-sm)">
+                                    Quand x → +∞, f(x) → 0 (la courbe se rapproche de l'axe des abscisses sans jamais le toucher).
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- 4. Fonction racine carrée -->
+                        <div class="cours-section" id="section-racine">
+                            <h2 class="cours-section-title">
+                                <span class="cours-section-num">4</span>
+                                Fonction racine carrée
+                            </h2>
+
+                            <div class="box box-definition">
+                                <div class="box-label">Définition</div>
+                                <p>La <strong>fonction racine carrée</strong> est définie sur [0 ; +∞[ par :</p>
+                                <p class="math-formula">f(x) = √x</p>
+                                <p>Son domaine de définition est <strong>D = [0 ; +∞[</strong> car on ne peut pas prendre la racine carrée d'un nombre négatif dans ℝ.</p>
+                            </div>
+
+                            <div class="box box-propriete">
+                                <div class="box-label">Propriétés</div>
+                                <ul>
+                                    <li><strong>Strictement croissante</strong> sur [0 ; +∞[.</li>
+                                    <li>f(x) ≥ 0 pour tout x ≥ 0.</li>
+                                    <li>f(0) = 0 et f(1) = 1 : la courbe passe par (0 ; 0) et (1 ; 1).</li>
+                                    <li>(√x)² = x pour tout x ≥ 0.</li>
+                                    <li>√(x²) = |x| (et non x si x est négatif).</li>
+                                    <li>√(a × b) = √a × √b pour a, b ≥ 0.</li>
+                                </ul>
+                            </div>
+
+                            <div class="box box-exemple">
+                                <div class="box-label">Exemple</div>
+                                <p>
+                                    f(0) = 0 &nbsp;|&nbsp; f(1) = 1 &nbsp;|&nbsp; f(4) = 2 &nbsp;|&nbsp; f(9) = 3 &nbsp;|&nbsp; f(25) = 5
+                                </p>
+                                <p style="margin-top:var(--space-sm)">
+                                    Résoudre √x = 3 : x = 3² = 9.
+                                </p>
+                                <p style="margin-top:var(--space-sm)">
+                                    Simplifier √12 = √(4 × 3) = 2√3.
+                                </p>
+                            </div>
+                        </div>
+
+                        <!-- Synthèse -->
+                        <div class="cours-section" id="section-synthese">
+                            <h2 class="cours-section-title">Synthèse comparative</h2>
+                            <div class="fonction-grid">
+                                <div class="fonction-card">
+                                    <div class="fonction-card-title">Fonction affine</div>
+                                    <div class="fonction-card-formula">f(x) = ax + b</div>
+                                    <svg class="fonction-card-graph" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="10" y1="110" x2="190" y2="110" stroke="#E2E8F0" stroke-width="1"/>
+                                        <line x1="100" y1="10" x2="100" y2="115" stroke="#E2E8F0" stroke-width="1"/>
+                                        <line x1="20" y1="100" x2="180" y2="20" stroke="#4F46E5" stroke-width="2.5" stroke-linecap="round"/>
+                                        <text x="150" y="30" font-size="11" fill="#4F46E5" font-family="Georgia, serif" font-style="italic">ax+b</text>
+                                    </svg>
+                                    <ul class="fonction-card-props">
+                                        <li>Droite</li>
+                                        <li>Domaine : ℝ</li>
+                                        <li>Croissante si a &gt; 0</li>
+                                    </ul>
+                                </div>
+                                <div class="fonction-card">
+                                    <div class="fonction-card-title">Fonction carré</div>
+                                    <div class="fonction-card-formula">f(x) = x²</div>
+                                    <svg class="fonction-card-graph" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="10" y1="110" x2="190" y2="110" stroke="#E2E8F0" stroke-width="1"/>
+                                        <line x1="100" y1="10" x2="100" y2="115" stroke="#E2E8F0" stroke-width="1"/>
+                                        <path d="M30 105 Q100 15 170 105" stroke="#4F46E5" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                                        <text x="140" y="40" font-size="11" fill="#4F46E5" font-family="Georgia, serif" font-style="italic">x²</text>
+                                    </svg>
+                                    <ul class="fonction-card-props">
+                                        <li>Parabole</li>
+                                        <li>Domaine : ℝ</li>
+                                        <li>Min en x = 0</li>
+                                    </ul>
+                                </div>
+                                <div class="fonction-card">
+                                    <div class="fonction-card-title">Fonction inverse</div>
+                                    <div class="fonction-card-formula">f(x) = 1/x</div>
+                                    <svg class="fonction-card-graph" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="10" y1="60" x2="190" y2="60" stroke="#E2E8F0" stroke-width="1"/>
+                                        <line x1="100" y1="10" x2="100" y2="115" stroke="#E2E8F0" stroke-width="1"/>
+                                        <path d="M110 10 Q130 30 170 55" stroke="#4F46E5" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                                        <path d="M30 65 Q70 90 90 110" stroke="#4F46E5" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                                        <text x="140" y="30" font-size="11" fill="#4F46E5" font-family="Georgia, serif" font-style="italic">1/x</text>
+                                    </svg>
+                                    <ul class="fonction-card-props">
+                                        <li>Hyperbole</li>
+                                        <li>Domaine : ℝ \ {0}</li>
+                                        <li>Décroissante sur chaque intervalle</li>
+                                    </ul>
+                                </div>
+                                <div class="fonction-card">
+                                    <div class="fonction-card-title">Racine carrée</div>
+                                    <div class="fonction-card-formula">f(x) = √x</div>
+                                    <svg class="fonction-card-graph" viewBox="0 0 200 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                        <line x1="10" y1="110" x2="190" y2="110" stroke="#E2E8F0" stroke-width="1"/>
+                                        <line x1="100" y1="10" x2="100" y2="115" stroke="#E2E8F0" stroke-width="1"/>
+                                        <path d="M100 110 Q130 80 190 40" stroke="#4F46E5" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+                                        <text x="155" y="38" font-size="11" fill="#4F46E5" font-family="Georgia, serif" font-style="italic">√x</text>
+                                    </svg>
+                                    <ul class="fonction-card-props">
+                                        <li>Demi-parabole</li>
+                                        <li>Domaine : [0 ; +∞[</li>
+                                        <li>Croissante</li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div><!-- /cours-content -->
+                </div><!-- /cours-layout -->
+            </div><!-- /tab-panel cours -->
+
+            <!-- ==================== EXERCICES ==================== -->
+            <div id="tab-exercices" class="tab-panel">
+                <div class="exercices-list">
+
+                    <!-- Exercice 1 -->
+                    <div class="exercice-card">
+                        <div class="exercice-header">
+                            <span class="exercice-num">Exercice 1</span>
+                            <span class="exercice-title">Identifier une fonction affine</span>
+                            <span class="diff-badge diff-facile">Facile</span>
+                        </div>
+                        <div class="exercice-body">
+                            <div class="exercice-enonce">
+                                <p>Parmi les expressions suivantes, lesquelles définissent une fonction affine ? Pour chacune, précise le coefficient directeur <em>a</em> et l'ordonnée à l'origine <em>b</em>.</p>
+                                <ol style="margin-top:var(--space-md);padding-left:var(--space-xl);display:flex;flex-direction:column;gap:var(--space-sm)">
+                                    <li><strong>f(x) = 3x + 5</strong></li>
+                                    <li><strong>g(x) = x²</strong></li>
+                                    <li><strong>h(x) = −2x</strong></li>
+                                    <li><strong>k(x) = 7</strong></li>
+                                    <li><strong>m(x) = x/2 − 1</strong></li>
+                                </ol>
+                            </div>
+                            <button class="show-solution-btn" type="button">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                <span class="btn-text">Voir la correction</span>
+                            </button>
+                            <div class="exercice-solution">
+                                <div class="solution-label">Correction</div>
+                                <p><strong>f(x) = 3x + 5</strong> ✓ — Affine avec <em>a = 3</em>, <em>b = 5</em>.</p>
+                                <p><strong>g(x) = x²</strong> ✗ — Ce n'est pas une fonction affine (c'est la fonction carré).</p>
+                                <p><strong>h(x) = −2x</strong> ✓ — Affine (linéaire) avec <em>a = −2</em>, <em>b = 0</em>.</p>
+                                <p><strong>k(x) = 7</strong> ✓ — Affine constante avec <em>a = 0</em>, <em>b = 7</em>.</p>
+                                <p><strong>m(x) = x/2 − 1</strong> ✓ — Affine avec <em>a = 0,5</em>, <em>b = −1</em>.</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Exercice 2 -->
+                    <div class="exercice-card">
+                        <div class="exercice-header">
+                            <span class="exercice-num">Exercice 2</span>
+                            <span class="exercice-title">Calculer des images</span>
+                            <span class="diff-badge diff-facile">Facile</span>
+                        </div>
+                        <div class="exercice-body">
+                            <div class="exercice-enonce">
+                                <p>Calcule les images suivantes :</p>
+                                <ol style="margin-top:var(--space-md);padding-left:var(--space-xl);display:flex;flex-direction:column;gap:var(--space-sm)">
+                                    <li>f(x) = x² ; calculer f(−5), f(0), f(√3).</li>
+                                    <li>g(x) = 1/x ; calculer g(4), g(−2), g(1/3).</li>
+                                    <li>h(x) = √x ; calculer h(0), h(16), h(1/4).</li>
+                                </ol>
+                            </div>
+                            <button class="show-solution-btn" type="button">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                <span class="btn-text">Voir la correction</span>
+                            </button>
+                            <div class="exercice-solution">
+                                <div class="solution-label">Correction</div>
+                                <p><strong>f(−5) = (−5)² = 25</strong> &nbsp;|&nbsp; <strong>f(0) = 0</strong> &nbsp;|&nbsp; <strong>f(√3) = (√3)² = 3</strong></p>
+                                <p><strong>g(4) = 1/4 = 0,25</strong> &nbsp;|&nbsp; <strong>g(−2) = 1/(−2) = −0,5</strong> &nbsp;|&nbsp; <strong>g(1/3) = 1/(1/3) = 3</strong></p>
+                                <p><strong>h(0) = 0</strong> &nbsp;|&nbsp; <strong>h(16) = √16 = 4</strong> &nbsp;|&nbsp; <strong>h(1/4) = √(1/4) = 1/2</strong></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Exercice 3 -->
+                    <div class="exercice-card">
+                        <div class="exercice-header">
+                            <span class="exercice-num">Exercice 3</span>
+                            <span class="exercice-title">Sens de variation</span>
+                            <span class="diff-badge diff-intermediaire">Intermédiaire</span>
+                        </div>
+                        <div class="exercice-body">
+                            <div class="exercice-enonce">
+                                <p>Sans calculatrice, compare les valeurs suivantes en utilisant les variations des fonctions de référence :</p>
+                                <ol style="margin-top:var(--space-md);padding-left:var(--space-xl);display:flex;flex-direction:column;gap:var(--space-sm)">
+                                    <li>√7 et √5 (sans calculer les valeurs)</li>
+                                    <li>1/3 et 1/5</li>
+                                    <li>(−3)² et (−4)²</li>
+                                    <li>√0,25 et 0,25</li>
+                                </ol>
+                            </div>
+                            <button class="show-solution-btn" type="button">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                <span class="btn-text">Voir la correction</span>
+                            </button>
+                            <div class="exercice-solution">
+                                <div class="solution-label">Correction</div>
+                                <p><strong>√7 > √5</strong> — la fonction racine carrée est croissante sur [0 ; +∞[ et 7 > 5.</p>
+                                <p><strong>1/3 > 1/5</strong> — la fonction inverse est décroissante sur ]0 ; +∞[ et 3 < 5, donc 1/3 > 1/5.</p>
+                                <p><strong>(−4)² > (−3)²</strong> — c'est-à-dire 16 > 9. La fonction carrée est croissante sur [0 ; +∞[, et |−4| > |−3|.</p>
+                                <p><strong>√0,25 = 0,5 > 0,25</strong> — pour x ∈ ]0 ; 1[, √x > x (car √x · √x = x et √x > 0 implique √x > x quand √x < 1).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Exercice 4 -->
+                    <div class="exercice-card">
+                        <div class="exercice-header">
+                            <span class="exercice-num">Exercice 4</span>
+                            <span class="exercice-title">Résoudre des équations</span>
+                            <span class="diff-badge diff-intermediaire">Intermédiaire</span>
+                        </div>
+                        <div class="exercice-body">
+                            <div class="exercice-enonce">
+                                <p>Résoudre dans ℝ les équations suivantes. Préciser le domaine de définition avant de résoudre.</p>
+                                <ol style="margin-top:var(--space-md);padding-left:var(--space-xl);display:flex;flex-direction:column;gap:var(--space-sm)">
+                                    <li>x² = 16</li>
+                                    <li>√x = 5</li>
+                                    <li>1/x = −2</li>
+                                    <li>x² = −4</li>
+                                </ol>
+                            </div>
+                            <button class="show-solution-btn" type="button">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                <span class="btn-text">Voir la correction</span>
+                            </button>
+                            <div class="exercice-solution">
+                                <div class="solution-label">Correction</div>
+                                <p><strong>x² = 16</strong> — domaine ℝ. x² = 16 ⟺ |x| = 4 ⟺ x = 4 ou x = −4. <em>S = {−4 ; 4}</em></p>
+                                <p><strong>√x = 5</strong> — domaine [0 ; +∞[. √x = 5 ⟺ x = 25 (car 5 ≥ 0). <em>S = {25}</em></p>
+                                <p><strong>1/x = −2</strong> — domaine ℝ \ {0}. 1/x = −2 ⟺ x = 1/(−2) = −1/2. <em>S = {−1/2}</em></p>
+                                <p><strong>x² = −4</strong> — domaine ℝ. Or x² ≥ 0 pour tout réel x, donc x² = −4 est impossible dans ℝ. <em>S = ∅</em></p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Exercice 5 -->
+                    <div class="exercice-card">
+                        <div class="exercice-header">
+                            <span class="exercice-num">Exercice 5</span>
+                            <span class="exercice-title">Domaine de définition</span>
+                            <span class="diff-badge diff-intermediaire">Intermédiaire</span>
+                        </div>
+                        <div class="exercice-body">
+                            <div class="exercice-enonce">
+                                <p>Déterminer le domaine de définition maximal (dans ℝ) de chacune des fonctions suivantes, puis la classer parmi les fonctions de référence.</p>
+                                <ol style="margin-top:var(--space-md);padding-left:var(--space-xl);display:flex;flex-direction:column;gap:var(--space-sm)">
+                                    <li>f(x) = √(x − 3)</li>
+                                    <li>g(x) = 1/(x + 2)</li>
+                                    <li>h(x) = (x − 1)²</li>
+                                </ol>
+                            </div>
+                            <button class="show-solution-btn" type="button">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                <span class="btn-text">Voir la correction</span>
+                            </button>
+                            <div class="exercice-solution">
+                                <div class="solution-label">Correction</div>
+                                <p><strong>f(x) = √(x − 3)</strong> — il faut x − 3 ≥ 0, soit x ≥ 3. Domaine : <em>[3 ; +∞[</em>. C'est une fonction racine carrée décalée.</p>
+                                <p><strong>g(x) = 1/(x + 2)</strong> — il faut x + 2 ≠ 0, soit x ≠ −2. Domaine : <em>ℝ \ {−2}</em>. C'est une fonction inverse décalée.</p>
+                                <p><strong>h(x) = (x − 1)²</strong> — définie pour tout réel. Domaine : <em>ℝ</em>. C'est une fonction carré décalée, parabole de sommet (1 ; 0).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Exercice 6 -->
+                    <div class="exercice-card">
+                        <div class="exercice-header">
+                            <span class="exercice-num">Exercice 6</span>
+                            <span class="exercice-title">Problème ouvert — Mise en situation</span>
+                            <span class="diff-badge diff-difficile">Difficile</span>
+                        </div>
+                        <div class="exercice-body">
+                            <div class="exercice-enonce">
+                                <p>
+                                    Un objet est lâché sans vitesse initiale depuis une hauteur <em>h</em> (en mètres).
+                                    Sa hauteur au bout de <em>t</em> secondes est donnée par :
+                                </p>
+                                <p class="math-formula" style="margin:var(--space-md) 0">h(t) = 20 − 5t²</p>
+                                <ol style="margin-top:var(--space-md);padding-left:var(--space-xl);display:flex;flex-direction:column;gap:var(--space-sm)">
+                                    <li>Quelle est la hauteur initiale de l'objet ?</li>
+                                    <li>Quelle est la hauteur après 1 seconde ? Après 2 secondes ?</li>
+                                    <li>Au bout de combien de secondes l'objet touche-t-il le sol (h = 0) ? Donner une valeur exacte et une valeur approchée.</li>
+                                    <li>De quelle fonction de référence la fonction h(t) se rapproche-t-elle (en ignorant les coefficients) ?</li>
+                                </ol>
+                            </div>
+                            <button class="show-solution-btn" type="button">
+                                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>
+                                <span class="btn-text">Voir la correction</span>
+                            </button>
+                            <div class="exercice-solution">
+                                <div class="solution-label">Correction</div>
+                                <p><strong>1.</strong> h(0) = 20 − 5 × 0² = 20 m. La hauteur initiale est <em>20 mètres</em>.</p>
+                                <p><strong>2.</strong> h(1) = 20 − 5 = 15 m. h(2) = 20 − 5 × 4 = 20 − 20 = 0 m.</p>
+                                <p><strong>3.</strong> h(t) = 0 ⟺ 20 − 5t² = 0 ⟺ t² = 4 ⟺ t = 2 (on garde t > 0). L'objet touche le sol après <em>t = 2 secondes exactement</em>.</p>
+                                <p><strong>4.</strong> h(t) = 20 − 5t² est de la forme A − B·t² : c'est une <em>fonction carré</em> (avec coefficient et décalage). La parabole est tournée vers le bas (coefficient de t² négatif).</p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div><!-- /exercices-list -->
+            </div><!-- /tab-panel exercices -->
+
+            <!-- ==================== QUIZ ==================== -->
+            <div id="tab-quiz" class="tab-panel">
+                <div class="quiz-wrapper">
+
+                    <div class="quiz-progress-bar-wrap">
+                        <div class="quiz-progress-fill" style="width:0%"></div>
+                    </div>
+
+                    <!-- Q1 -->
+                    <div class="quiz-question-card" data-correct="1" data-explanation="La fonction inverse n'est pas définie en x = 0 : son domaine est ℝ \ {0}.">
+                        <div class="quiz-question-num">Question 1 / 8</div>
+                        <div class="quiz-question-text">Quel est le domaine de définition de la fonction inverse f(x) = 1/x ?</div>
+                        <div class="quiz-options">
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">A</span> ℝ</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">B</span> ℝ \ {0}</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">C</span> [0 ; +∞[</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">D</span> ]0 ; +∞[</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q2 -->
+                    <div class="quiz-question-card" data-correct="2" data-explanation="La fonction carré est décroissante sur ]-∞ ; 0] et croissante sur [0 ; +∞[. Son minimum est en x = 0.">
+                        <div class="quiz-question-num">Question 2 / 8</div>
+                        <div class="quiz-question-text">Sur quel intervalle la fonction carré f(x) = x² est-elle décroissante ?</div>
+                        <div class="quiz-options">
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">A</span> [0 ; +∞[</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">B</span> ℝ entier</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">C</span> ]−∞ ; 0]</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">D</span> Elle n'est jamais décroissante</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q3 -->
+                    <div class="quiz-question-card" data-correct="0" data-explanation="f(√3) = (√3)² = 3. La définition de la racine carrée donne (√a)² = a pour a ≥ 0.">
+                        <div class="quiz-question-num">Question 3 / 8</div>
+                        <div class="quiz-question-text">Soit f(x) = x². Quelle est la valeur de f(√3) ?</div>
+                        <div class="quiz-options">
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">A</span> 3</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">B</span> √3</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">C</span> 9</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">D</span> 1,5</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q4 -->
+                    <div class="quiz-question-card" data-correct="3" data-explanation="La fonction racine carrée est définie uniquement pour x ≥ 0. Son domaine est [0 ; +∞[.">
+                        <div class="quiz-question-num">Question 4 / 8</div>
+                        <div class="quiz-question-text">Pourquoi f(x) = √x n'est-elle pas définie pour x = −9 dans ℝ ?</div>
+                        <div class="quiz-options">
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">A</span> Car −9 est impair</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">B</span> Car −9 n'est pas un carré parfait</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">C</span> Car le résultat serait trop grand</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">D</span> Car on ne peut pas prendre la racine carrée d'un nombre négatif dans ℝ</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q5 -->
+                    <div class="quiz-question-card" data-correct="1" data-explanation="f(x) = 3x + 5 est affine (a = 3, b = 5). x² est carré. 7 est constante (affine avec a = 0). Seule 1/x est la fonction inverse.">
+                        <div class="quiz-question-num">Question 5 / 8</div>
+                        <div class="quiz-question-text">Laquelle de ces expressions représente la fonction inverse ?</div>
+                        <div class="quiz-options">
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">A</span> f(x) = 3x + 5</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">B</span> f(x) = 1/x</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">C</span> f(x) = x²</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">D</span> f(x) = 7</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q6 -->
+                    <div class="quiz-question-card" data-correct="2" data-explanation="La courbe représentative de la fonction carré est une parabole, de sommet à l'origine, ouverte vers le haut.">
+                        <div class="quiz-question-num">Question 6 / 8</div>
+                        <div class="quiz-question-text">Comment s'appelle la courbe représentative de la fonction carré f(x) = x² ?</div>
+                        <div class="quiz-options">
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">A</span> Une droite</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">B</span> Une hyperbole</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">C</span> Une parabole</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">D</span> Un cercle</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q7 -->
+                    <div class="quiz-question-card" data-correct="0" data-explanation="1/3 > 1/5 car la fonction inverse est décroissante sur ]0 ; +∞[ et 3 < 5.">
+                        <div class="quiz-question-num">Question 7 / 8</div>
+                        <div class="quiz-question-text">En utilisant les variations de la fonction inverse, compare 1/3 et 1/5.</div>
+                        <div class="quiz-options">
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">A</span> 1/3 &gt; 1/5</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">B</span> 1/3 &lt; 1/5</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">C</span> 1/3 = 1/5</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">D</span> On ne peut pas comparer sans calculatrice</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Q8 -->
+                    <div class="quiz-question-card" data-correct="3" data-explanation="x² = −4 est impossible car x² ≥ 0 pour tout réel x. L'ensemble solution est l'ensemble vide ∅.">
+                        <div class="quiz-question-num">Question 8 / 8</div>
+                        <div class="quiz-question-text">Combien de solutions réelles possède l'équation x² = −4 ?</div>
+                        <div class="quiz-options">
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">A</span> Deux solutions : 2 et −2</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">B</span> Une solution : 2</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">C</span> Une solution : −2</button>
+                            <button class="quiz-option" type="button"><span class="quiz-option-letter">D</span> Aucune solution réelle</button>
+                        </div>
+                        <div class="quiz-feedback"></div>
+                    </div>
+
+                    <!-- Navigation quiz -->
+                    <div class="quiz-nav">
+                        <button id="quiz-prev" class="btn btn-ghost" type="button" disabled>← Précédent</button>
+                        <button id="quiz-next" class="btn btn-primary" type="button">Suivant →</button>
+                        <button id="quiz-finish" class="btn btn-primary" type="button" style="display:none">Voir mes résultats</button>
+                    </div>
+
+                    <!-- Score final -->
+                    <div class="quiz-score-card">
+                        <div class="quiz-score-circle">–</div>
+                        <div class="quiz-score-title">Résultats</div>
+                        <div class="quiz-score-sub"></div>
+                        <div style="display:flex;gap:var(--space-md);justify-content:center;flex-wrap:wrap">
+                            <button id="quiz-retry" class="btn btn-outline" type="button">Recommencer le quiz</button>
+                            <button class="btn btn-primary" type="button" onclick="document.querySelector('[data-tab=exercices]').click()">Revoir les exercices</button>
+                        </div>
+                    </div>
+
+                </div><!-- /quiz-wrapper -->
+            </div><!-- /tab-panel quiz -->
+
+        </div><!-- /container -->
+    </main>
+
+    <!-- ===== FOOTER MINIMAL ===== -->
+    <footer style="background:var(--color-text);padding:var(--space-xl) 0;text-align:center">
+        <div class="container">
+            <p style="font-size:0.875rem;color:rgba(255,255,255,0.4)">
+                © 2024 MathCoach · <a href="../index.html" style="color:rgba(255,255,255,0.6);text-decoration:underline">Retour à l'accueil</a>
+            </p>
+        </div>
+    </footer>
+
+    <script src="../chapter.js"></script>
+</body>
+</html>
