@@ -1,4 +1,4 @@
-# CLAUDE.md — Guide pour assistants IA — mathcoach
+# Guide pour assistants IA — mathcoach
 
 Ce fichier est la référence centrale pour tout assistant IA travaillant sur ce dépôt.
 Lis-le intégralement avant de toucher au moindre fichier.
