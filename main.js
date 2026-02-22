@@ -92,6 +92,7 @@
   const revealSelectors = [
     '.feature-card',
     '.level-card',
+    '.level-col',
     '.step-card',
     '.testimonial-card',
     '.section-header',
