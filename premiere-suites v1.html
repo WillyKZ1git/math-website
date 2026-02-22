@@ -1,0 +1,1173 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Suites numériques | Première | MathCoach</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@700;800;900&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/katex.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.9/contrib/auto-render.min.js"></script>
+  <style>
+    /* KaTeX fine-tuning — rapproche du rendu kpfonts */
+    .katex { font-size: 1.05em; }
+    .katex-display { margin: 1rem 0; overflow-x: auto; }
+    .katex-display > .katex { font-size: 1.1em; }
+  </style>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:       #1a2e4a;
+      --blue:       #2d6a9f;
+      --blue-light: #e8f4fd;
+      --accent:     #4a9fd4;
+      --white:      #ffffff;
+      --text:       #1a1a2e;
+      --text-muted: #5a6a80;
+      --border:     #d4e6f5;
+      --green:      #27ae60;
+      --green-bg:   #eafaf1;
+      --red:        #e74c3c;
+      --red-bg:     #fdf0ef;
+      --yellow-bg:  #fffbea;
+      --yellow:     #d4a017;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      color: var(--text);
+      background: #f7fafd;
+      line-height: 1.7;
+    }
+
+    /* ── NAV ───────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: var(--navy);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 2.5rem; height: 64px;
+      box-shadow: 0 2px 16px rgba(0,0,0,.2);
+    }
+    .nav-logo { font-family: 'Nunito', sans-serif; font-size: 1.4rem; font-weight: 900; color: var(--white); text-decoration: none; }
+    .nav-logo span { color: var(--accent); }
+    .nav-breadcrumb { display: flex; align-items: center; gap: .5rem; font-size: .85rem; color: rgba(255,255,255,.5); }
+    .nav-breadcrumb a { color: rgba(255,255,255,.6); text-decoration: none; transition: color .2s; }
+    .nav-breadcrumb a:hover { color: var(--white); }
+    .nav-breadcrumb .sep { color: rgba(255,255,255,.3); }
+    .nav-breadcrumb .current { color: var(--accent); font-weight: 600; }
+    .btn-nav { background: var(--accent); color: var(--white); padding: .45rem 1.1rem; border-radius: 6px; font-size: .85rem; font-weight: 600; text-decoration: none; transition: background .2s; }
+    .btn-nav:hover { background: #3a8cc0; }
+
+    /* ── LAYOUT ────────────────────────────────────────── */
+    .page-wrapper { display: grid; grid-template-columns: 260px 1fr; min-height: 100vh; padding-top: 64px; }
+
+    /* ── SIDEBAR ───────────────────────────────────────── */
+    .sidebar { position: sticky; top: 64px; height: calc(100vh - 64px); overflow-y: auto; background: var(--white); border-right: 1px solid var(--border); padding: 2rem 1.5rem; }
+    .sidebar-title { font-size: .7rem; font-weight: 700; letter-spacing: 2px; text-transform: uppercase; color: var(--text-muted); margin-bottom: 1rem; }
+    .sidebar-nav { list-style: none; display: flex; flex-direction: column; gap: .2rem; }
+    .sidebar-nav a { display: flex; align-items: center; gap: .6rem; padding: .55rem .8rem; border-radius: 8px; text-decoration: none; font-size: .88rem; color: var(--text-muted); font-weight: 500; transition: background .15s, color .15s; }
+    .sidebar-nav a:hover { background: var(--blue-light); color: var(--blue); }
+    .sidebar-nav a.active { background: var(--blue-light); color: var(--blue); font-weight: 600; }
+    .sidebar-nav .icon { width: 22px; height: 22px; border-radius: 5px; display: flex; align-items: center; justify-content: center; font-size: .8rem; flex-shrink: 0; background: var(--blue-light); color: var(--blue); }
+    .sidebar-nav a.active .icon { background: var(--blue); color: var(--white); }
+    .sidebar-divider { border: none; border-top: 1px solid var(--border); margin: 1.2rem 0; }
+    .sidebar-section { margin-bottom: 1.5rem; }
+    .progress-wrap { margin-top: .5rem; }
+    .progress-label { display: flex; justify-content: space-between; font-size: .8rem; color: var(--text-muted); margin-bottom: .4rem; }
+    .progress-bar { height: 6px; background: var(--border); border-radius: 10px; overflow: hidden; }
+    .progress-fill { height: 100%; background: var(--accent); border-radius: 10px; width: 0%; transition: width .6s ease; }
+
+    /* ── MAIN ──────────────────────────────────────────── */
+    .main-content { padding: 2.5rem 3rem; max-width: 860px; }
+
+    /* Tabs */
+    .tabs { display: flex; gap: .5rem; margin-bottom: 2.5rem; border-bottom: 2px solid var(--border); }
+    .tab-btn { padding: .7rem 1.4rem; border: none; background: none; cursor: pointer; font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 600; color: var(--text-muted); border-bottom: 3px solid transparent; margin-bottom: -2px; transition: color .2s, border-color .2s; display: flex; align-items: center; gap: .5rem; }
+    .tab-btn:hover { color: var(--blue); }
+    .tab-btn.active { color: var(--blue); border-bottom-color: var(--blue); }
+    .tab-panel { display: none; animation: fadeIn .3s ease; }
+    .tab-panel.active { display: block; }
+    @keyframes fadeIn { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
+
+    /* Chapter header */
+    .chapter-header { background: linear-gradient(135deg, var(--navy) 0%, #1e3d5c 100%); border-radius: 16px; padding: 2rem 2.5rem; margin-bottom: 2rem; position: relative; overflow: hidden; }
+    .chapter-header::after { content: 'uₙ'; position: absolute; right: 2rem; top: 50%; transform: translateY(-50%); font-family: 'Nunito', sans-serif; font-size: 5rem; font-weight: 900; color: rgba(255,255,255,.06); pointer-events: none; }
+    .chapter-meta { display: flex; align-items: center; gap: .8rem; margin-bottom: .8rem; flex-wrap: wrap; }
+    .chip { font-size: .72rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; padding: .25rem .7rem; border-radius: 20px; }
+    .chip-level { background: rgba(74,159,212,.25); color: var(--accent); }
+    .chip-free  { background: rgba(39,174,96,.2); color: #4cde8f; }
+    .chapter-header h1 { font-family: 'Nunito', sans-serif; font-size: 1.8rem; font-weight: 900; color: var(--white); margin-bottom: .4rem; }
+    .chapter-header p { color: rgba(255,255,255,.65); font-size: .95rem; }
+
+    /* ── COURS ─────────────────────────────────────────── */
+    .lesson-block { margin-bottom: 2.2rem; }
+    .lesson-block h2 { font-family: 'Nunito', sans-serif; font-size: 1.3rem; font-weight: 800; color: var(--navy); margin-bottom: 1rem; padding-bottom: .5rem; border-bottom: 2px solid var(--blue-light); display: flex; align-items: center; gap: .6rem; }
+    .lesson-block h2 .h2-num { width: 28px; height: 28px; background: var(--blue); color: var(--white); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: .85rem; flex-shrink: 0; }
+    .lesson-block h3 { font-family: 'Nunito', sans-serif; font-size: 1.05rem; font-weight: 800; color: var(--blue); margin: 1.3rem 0 .5rem; }
+    .lesson-block p { font-size: .95rem; color: var(--text); margin-bottom: .8rem; }
+
+    .callout { border-radius: 10px; padding: 1.2rem 1.5rem; margin: 1.2rem 0; border-left: 4px solid; }
+    .callout-def  { background: var(--blue-light); border-color: var(--blue); }
+    .callout-prop { background: #f0f7ff; border-color: #5b9bd5; }
+    .callout-warn { background: var(--yellow-bg); border-color: var(--yellow); }
+    .callout-tip  { background: var(--green-bg); border-color: var(--green); }
+    .callout-label { font-size: .72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; margin-bottom: .5rem; }
+    .callout-def  .callout-label { color: var(--blue); }
+    .callout-prop .callout-label { color: #5b9bd5; }
+    .callout-warn .callout-label { color: var(--yellow); }
+    .callout-tip  .callout-label { color: var(--green); }
+    .callout p { font-size: .93rem; margin: 0; line-height: 1.7; }
+
+    .formula-box { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 1.1rem 1.5rem; text-align: center; margin: 1rem 0; font-size: 1rem; line-height: 2; }
+
+    .math-table { width: 100%; border-collapse: collapse; margin: 1rem 0; font-size: .9rem; }
+    .math-table th { background: var(--navy); color: var(--white); padding: .6rem 1rem; text-align: left; font-weight: 600; }
+    .math-table td { padding: .65rem 1rem; border-bottom: 1px solid var(--border); vertical-align: top; }
+    .math-table tr:nth-child(even) td { background: var(--blue-light); }
+
+    /* Deux colonnes côte à côte */
+    .two-cols { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin: 1rem 0; }
+    .col-card { background: var(--white); border: 1.5px solid var(--border); border-radius: 10px; padding: 1.2rem; }
+    .col-card h4 { font-family: 'Nunito', sans-serif; font-weight: 800; color: var(--navy); margin-bottom: .6rem; font-size: .95rem; }
+    .col-card p { font-size: .88rem; color: var(--text-muted); margin: 0; line-height: 1.6; }
+
+    /* ── EXERCICES ──────────────────────────────────────── */
+    .exercise { background: var(--white); border-radius: 12px; border: 1.5px solid var(--border); margin-bottom: 1.5rem; overflow: hidden; }
+    .exercise-header { display: flex; align-items: center; justify-content: space-between; padding: 1.2rem 1.5rem; background: var(--blue-light); cursor: pointer; user-select: none; }
+    .exercise-header-left { display: flex; align-items: center; gap: .8rem; }
+    .ex-num { background: var(--blue); color: var(--white); width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center; font-family: 'Nunito', sans-serif; font-size: .9rem; font-weight: 800; flex-shrink: 0; }
+    .exercise-title { font-weight: 600; font-size: .95rem; color: var(--navy); }
+    .diff-badge { font-size: .7rem; font-weight: 700; padding: .2rem .6rem; border-radius: 20px; letter-spacing: .5px; }
+    .diff-easy      { background: var(--green-bg);  color: var(--green); }
+    .diff-medium    { background: var(--yellow-bg); color: #a07800; }
+    .diff-hard      { background: var(--red-bg);    color: var(--red); }
+    .diff-challenge { background: #f3e8ff;           color: #7c3aed; }
+    .toggle-icon { font-size: 1.1rem; color: var(--blue); transition: transform .3s; }
+    .exercise.open .toggle-icon { transform: rotate(180deg); }
+    .exercise-body { display: none; padding: 1.5rem; border-top: 1px solid var(--border); }
+    .exercise.open .exercise-body { display: block; }
+    .exercise-statement { font-size: .95rem; margin-bottom: 1.2rem; }
+    .exercise-statement ol, .exercise-statement ul { padding-left: 1.4rem; margin-top: .5rem; display: flex; flex-direction: column; gap: .5rem; }
+
+    .correction-btn { display: inline-flex; align-items: center; gap: .5rem; background: var(--navy); color: var(--white); border: none; border-radius: 8px; padding: .6rem 1.2rem; font-family: 'DM Sans', sans-serif; font-size: .88rem; font-weight: 600; cursor: pointer; transition: background .2s; margin-bottom: 1rem; }
+    .correction-btn:hover { background: var(--blue); }
+    .correction { display: none; background: var(--green-bg); border: 1px solid #a9dfbf; border-radius: 10px; padding: 1.2rem 1.5rem; }
+    .correction.visible { display: block; animation: fadeIn .3s ease; }
+    .correction-label { font-size: .72rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--green); margin-bottom: .8rem; }
+    .correction p { font-size: .92rem; margin-bottom: .6rem; }
+    .correction ol { padding-left: 1.4rem; display: flex; flex-direction: column; gap: .7rem; font-size: .92rem; }
+
+    /* ── QUIZ ───────────────────────────────────────────── */
+    .quiz-intro { background: var(--white); border-radius: 12px; border: 1.5px solid var(--border); padding: 1.5rem 2rem; margin-bottom: 1.5rem; display: flex; align-items: center; justify-content: space-between; gap: 1.5rem; flex-wrap: wrap; }
+    .quiz-intro h3 { font-family: 'Nunito', sans-serif; font-size: 1.1rem; font-weight: 800; color: var(--navy); }
+    .quiz-intro p  { font-size: .88rem; color: var(--text-muted); margin-top: .2rem; }
+    .quiz-stats { display: flex; gap: 2rem; }
+    .quiz-stat { text-align: center; }
+    .quiz-stat-num { font-family: 'Nunito', sans-serif; font-size: 1.6rem; font-weight: 900; color: var(--blue); line-height: 1; }
+    .quiz-stat-label { font-size: .72rem; color: var(--text-muted); margin-top: .2rem; }
+    .btn-start { background: var(--accent); color: var(--white); border: none; padding: .75rem 1.8rem; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 600; cursor: pointer; transition: background .2s, transform .15s; box-shadow: 0 4px 14px rgba(74,159,212,.35); white-space: nowrap; }
+    .btn-start:hover { background: #3a8cc0; transform: translateY(-1px); }
+
+    #quiz-container { display: none; }
+    .quiz-progress-bar { height: 6px; background: var(--border); border-radius: 10px; margin-bottom: 2rem; overflow: hidden; }
+    .quiz-progress-fill { height: 100%; background: var(--accent); border-radius: 10px; transition: width .4s ease; }
+
+    .question-card { background: var(--white); border-radius: 14px; border: 1.5px solid var(--border); padding: 2rem; margin-bottom: 1rem; display: none; }
+    .question-card.current { display: block; animation: fadeIn .3s ease; }
+    .question-num { font-size: .78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--text-muted); margin-bottom: .8rem; }
+    .question-text { font-size: 1.05rem; font-weight: 600; color: var(--navy); margin-bottom: 1.4rem; line-height: 1.6; }
+
+    .options { display: flex; flex-direction: column; gap: .7rem; }
+    .option { display: flex; align-items: center; gap: 1rem; padding: .9rem 1.2rem; border-radius: 10px; border: 1.5px solid var(--border); cursor: pointer; font-size: .93rem; background: var(--white); transition: border-color .2s, background .2s; }
+    .option:hover:not(.disabled) { border-color: var(--accent); background: var(--blue-light); }
+    .option.selected  { border-color: var(--blue);  background: var(--blue-light); }
+    .option.correct   { border-color: var(--green); background: var(--green-bg); }
+    .option.wrong     { border-color: var(--red);   background: var(--red-bg); }
+    .option.show-correct { border-color: var(--green); background: var(--green-bg); }
+    .option.disabled  { cursor: default; }
+
+    .option-letter { width: 30px; height: 30px; border-radius: 50%; background: var(--blue-light); color: var(--blue); display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: .85rem; flex-shrink: 0; transition: background .2s, color .2s; }
+    .option.correct .option-letter   { background: var(--green); color: var(--white); }
+    .option.wrong   .option-letter   { background: var(--red);   color: var(--white); }
+    .option.show-correct .option-letter { background: var(--green); color: var(--white); }
+
+    .feedback-box { display: none; margin-top: 1rem; padding: 1rem 1.2rem; border-radius: 10px; font-size: .9rem; line-height: 1.6; }
+    .feedback-box.correct { display: block; background: var(--green-bg); border: 1px solid #a9dfbf; color: #1a6b3a; }
+    .feedback-box.wrong   { display: block; background: var(--red-bg);   border: 1px solid #f5c6c2; color: #922b21; }
+
+    .quiz-nav { display: flex; justify-content: flex-end; margin-top: 1.5rem; }
+    .btn-next { background: var(--blue); color: var(--white); border: none; padding: .7rem 1.6rem; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: .9rem; font-weight: 600; cursor: pointer; transition: background .2s; display: none; }
+    .btn-next:hover { background: var(--navy); }
+    .btn-next.visible { display: inline-block; }
+
+    /* Score */
+    #quiz-result { display: none; text-align: center; background: var(--white); border-radius: 16px; border: 1.5px solid var(--border); padding: 3rem 2rem; }
+    .score-ring { width: 120px; height: 120px; border-radius: 50%; margin: 0 auto 1.5rem; display: flex; flex-direction: column; align-items: center; justify-content: center; font-family: 'Nunito', sans-serif; }
+    .score-ring .score-num   { font-size: 2.2rem; font-weight: 900; line-height: 1; }
+    .score-ring .score-total { font-size: .85rem; font-weight: 600; opacity: .7; }
+    .score-excellent { background: var(--green-bg); border: 4px solid var(--green); color: var(--green); }
+    .score-good      { background: var(--yellow-bg); border: 4px solid var(--yellow); color: #a07800; }
+    .score-retry     { background: var(--red-bg);    border: 4px solid var(--red);    color: var(--red); }
+    #quiz-result h3 { font-family: 'Nunito', sans-serif; font-size: 1.5rem; font-weight: 900; color: var(--navy); margin-bottom: .5rem; }
+    #quiz-result p  { color: var(--text-muted); font-size: .95rem; margin-bottom: 1.5rem; }
+    .btn-retry { background: var(--blue); color: var(--white); border: none; padding: .75rem 2rem; border-radius: 8px; font-family: 'DM Sans', sans-serif; font-size: .95rem; font-weight: 600; cursor: pointer; transition: background .2s; }
+    .btn-retry:hover { background: var(--navy); }
+
+    /* ── GRAPHIQUES ─────────────────────────────────────── */
+    .graph-wrap {
+      background: var(--white);
+      border: 1.5px solid var(--border);
+      border-radius: 12px;
+      padding: 1.2rem 1.5rem;
+      margin: 1.2rem 0;
+    }
+    .graph-title {
+      font-family: 'Nunito', sans-serif;
+      font-size: .85rem; font-weight: 800;
+      color: var(--navy); margin-bottom: .8rem;
+      display: flex; align-items: center; gap: .5rem;
+    }
+    .graph-title .gtag {
+      background: var(--blue-light); color: var(--blue);
+      font-size: .7rem; padding: .15rem .5rem; border-radius: 20px;
+    }
+    canvas { display: block; width: 100%; border-radius: 6px; }
+
+    .graph-controls {
+      display: flex; align-items: center; gap: 1rem;
+      margin-top: .8rem; flex-wrap: wrap;
+    }
+    .graph-controls label { font-size: .82rem; color: var(--text-muted); display: flex; align-items: center; gap: .4rem; }
+    .graph-controls input[type=range] { accent-color: var(--accent); cursor: pointer; }
+    .graph-controls span { font-family: 'Nunito', sans-serif; font-weight: 700; color: var(--blue); min-width: 30px; }
+    .graph-legend { display: flex; gap: 1.2rem; margin-top: .6rem; flex-wrap: wrap; }
+    .legend-item { display: flex; align-items: center; gap: .4rem; font-size: .8rem; color: var(--text-muted); }
+    .legend-dot { width: 10px; height: 10px; border-radius: 50%; flex-shrink: 0; }
+    @media (max-width: 900px) {
+      .page-wrapper { grid-template-columns: 1fr; }
+      .sidebar { display: none; }
+      .main-content { padding: 1.5rem; }
+      nav { padding: 0 1.5rem; }
+      .nav-breadcrumb { display: none; }
+      .two-cols { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a href="../index.html" class="nav-logo">Math<span>Coach</span></a>
+  <div class="nav-breadcrumb">
+    <a href="../index.html">Accueil</a>
+    <span class="sep">›</span>
+    <a href="#">Première</a>
+    <span class="sep">›</span>
+    <span class="current">Suites numériques</span>
+  </div>
+  <a href="../reservation.html" class="btn-nav">Réserver une séance</a>
+</nav>
+
+<div class="page-wrapper">
+
+  <!-- SIDEBAR -->
+  <aside class="sidebar">
+    <div class="sidebar-section">
+      <div class="sidebar-title">Ce chapitre</div>
+      <ul class="sidebar-nav">
+        <li><a href="#" class="active" onclick="switchTab('cours'); return false;"><span class="icon">📖</span> Cours</a></li>
+        <li><a href="#" onclick="switchTab('exercices'); return false;"><span class="icon">✏️</span> Exercices corrigés</a></li>
+        <li><a href="#" onclick="switchTab('quiz'); return false;"><span class="icon">🎯</span> Quiz</a></li>
+      </ul>
+    </div>
+    <hr class="sidebar-divider">
+    <div class="sidebar-section">
+      <div class="sidebar-title">Progression</div>
+      <div class="progress-wrap">
+        <div class="progress-label"><span>Quiz complété</span><span id="progressPct">0%</span></div>
+        <div class="progress-bar"><div class="progress-fill" id="progressFill"></div></div>
+      </div>
+    </div>
+    <hr class="sidebar-divider">
+    <div class="sidebar-section">
+      <div class="sidebar-title">Autres chapitres — Première</div>
+      <ul class="sidebar-nav">
+        <li><a href="#" style="opacity:.4; pointer-events:none;"><span class="icon">🔒</span> Dérivation</a></li>
+        <li><a href="#" style="opacity:.4; pointer-events:none;"><span class="icon">🔒</span> Trigonométrie</a></li>
+        <li><a href="#" style="opacity:.4; pointer-events:none;"><span class="icon">🔒</span> Probabilités</a></li>
+      </ul>
+      <div style="margin-top:1rem; background:var(--blue-light); border-radius:10px; padding:.9rem 1rem; font-size:.8rem; color:var(--blue);">
+        <strong>MathCoach+</strong> — Accède à tous les chapitres en illimité.
+        <a href="../reservation.html" style="display:block; margin-top:.4rem; color:var(--blue); font-weight:700;">En savoir plus →</a>
+      </div>
+    </div>
+  </aside>
+
+  <!-- MAIN -->
+  <main class="main-content">
+
+    <div class="chapter-header">
+      <div class="chapter-meta">
+        <span class="chip chip-level">Première</span>
+        <span class="chip chip-free">Accès libre</span>
+      </div>
+      <h1>Suites numériques</h1>
+      <p>Définition, suites arithmétiques et géométriques, sens de variation, raisonnement par récurrence.</p>
+    </div>
+
+    <div class="tabs">
+      <button class="tab-btn active" onclick="switchTab('cours')"    id="tab-cours">📖 Cours</button>
+      <button class="tab-btn"        onclick="switchTab('exercices')" id="tab-exercices">✏️ Exercices corrigés</button>
+      <button class="tab-btn"        onclick="switchTab('quiz')"      id="tab-quiz">🎯 Quiz</button>
+    </div>
+
+    <!-- ═══════ COURS ═══════ -->
+    <div class="tab-panel active" id="panel-cours">
+
+      <!-- 1. Définitions générales -->
+      <div class="lesson-block">
+        <h2><span class="h2-num">1</span> Définitions générales</h2>
+
+        <div class="callout callout-def">
+          <div class="callout-label">Définition</div>
+          <p>Une <strong>suite numérique</strong> est une fonction définie sur \(\mathbb{N}\) (ou une partie de \(\mathbb{N}\)) à valeurs dans \(\mathbb{R}\). On note ses termes \(u_0, u_1, u_2, \ldots, u_n, \ldots\) où \(n\) est le <strong>rang</strong> du terme.</p>
+        </div>
+
+        <h3>Deux modes de définition</h3>
+        <div class="two-cols">
+          <div class="col-card">
+            <h4>Par une formule explicite</h4>
+            <p>On exprime \(u_n\) directement en fonction de \(n\).<br><br>
+            Exemple : \(u_n = 3n + 1\)<br>
+            \(u_0 = 1,\; u_1 = 4,\; u_5 = 16\)</p>
+          </div>
+          <div class="col-card">
+            <h4>Par récurrence</h4>
+            <p>On donne le premier terme \(u_0\) et une relation liant \(u_{n+1}\) à \(u_n\).<br><br>
+            Exemple : \(u_0 = 2\) et \(u_{n+1} = 2u_n - 1\)<br>
+            \(u_1 = 3,\; u_2 = 5,\; u_3 = 9\)</p>
+          </div>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-label">⚠️ Attention</div>
+          <p>Avec une définition par récurrence, calculer \(u_{50}\) impose de calculer tous les termes précédents un par un. La formule explicite est bien plus efficace quand elle existe.</p>
+        </div>
+      </div>
+
+      <!-- 2. Suites arithmétiques -->
+      <div class="lesson-block">
+        <h2><span class="h2-num">2</span> Suites arithmétiques</h2>
+
+        <div class="callout callout-def">
+          <div class="callout-label">Définition</div>
+          <p>Une suite \((u_n)\) est <strong>arithmétique</strong> de raison \(r\) si pour tout entier \(n\) :<br>
+          \[u_{n+1} = u_n + r\]
+          Autrement dit, on passe d'un terme au suivant en ajoutant toujours la même constante \(r\).</p>
+        </div>
+
+        <h3>Formule du terme général</h3>
+        <div class="formula-box">
+          \[u_n = u_0 + n \cdot r \qquad \text{ou plus généralement} \qquad u_n = u_p + (n-p) \cdot r\]
+        </div>
+
+        <h3>Somme des termes</h3>
+        <div class="formula-box">
+          \[u_0 + u_1 + \cdots + u_n = (n+1) \cdot \frac{u_0 + u_n}{2}\]
+        </div>
+
+        <!-- Graphique arithmétique interactif -->
+        <div class="graph-wrap">
+          <div class="graph-title">📈 Visualisation interactive <span class="gtag">Glisse le curseur</span></div>
+          <canvas id="canvasArith" height="220"></canvas>
+          <div class="graph-controls">
+            <label>Premier terme \(u_0\) : <input type="range" id="sliderU0" min="-5" max="15" value="2" step="1"> <span id="valU0">2</span></label>
+            <label>Raison \(r\) : <input type="range" id="sliderR" min="-4" max="6" value="3" step="1"> <span id="valR">3</span></label>
+          </div>
+          <div class="graph-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#4a9fd4"></div> Termes \(u_n\)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#e8f4fd; border:2px solid #4a9fd4"></div> Ligne de tendance</div>
+          </div>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-label">💡 Moyen mémo-technique</div>
+          <p>La somme d'une suite arithmétique = <strong>nombre de termes × moyenne du premier et du dernier terme</strong>. Pensez à une somme des entiers : \(1+2+\cdots+100 = 101 \times 50 = 5050\).</p>
+        </div>
+
+        <h3>Sens de variation</h3>
+        <table class="math-table">
+          <tr><th>Raison \(r\)</th><th>Variation de la suite</th></tr>
+          <tr><td>\(r > 0\)</td><td>Suite strictement croissante</td></tr>
+          <tr><td>\(r = 0\)</td><td>Suite constante</td></tr>
+          <tr><td>\(r < 0\)</td><td>Suite strictement décroissante</td></tr>
+        </table>
+      </div>
+
+      <!-- 3. Suites géométriques -->
+      <div class="lesson-block">
+        <h2><span class="h2-num">3</span> Suites géométriques</h2>
+
+        <div class="callout callout-def">
+          <div class="callout-label">Définition</div>
+          <p>Une suite \((u_n)\) est <strong>géométrique</strong> de raison \(q\) (avec \(q \neq 0\) et \(u_0 \neq 0\)) si pour tout entier \(n\) :<br>
+          \[u_{n+1} = q \cdot u_n\]
+          On passe d'un terme au suivant en multipliant toujours par la même constante \(q\).</p>
+        </div>
+
+        <h3>Formule du terme général</h3>
+        <div class="formula-box">
+          \[u_n = u_0 \cdot q^n \qquad \text{ou plus généralement} \qquad u_n = u_p \cdot q^{n-p}\]
+        </div>
+
+        <h3>Somme des termes (pour \(q \neq 1\))</h3>
+        <div class="formula-box">
+          \[u_0 + u_1 + \cdots + u_n = u_0 \cdot \frac{1 - q^{n+1}}{1 - q}\]
+        </div>
+
+        <h3>Sens de variation (pour \(u_0 > 0\))</h3>
+        <table class="math-table">
+          <tr><th>Raison \(q\)</th><th>Variation</th></tr>
+          <tr><td>\(q > 1\)</td><td>Suite strictement croissante</td></tr>
+          <tr><td>\(0 < q < 1\)</td><td>Suite strictement décroissante (tend vers 0)</td></tr>
+          <tr><td>\(q = 1\)</td><td>Suite constante</td></tr>
+          <tr><td>\(q < 0\)</td><td>Suite alternativement positive et négative</td></tr>
+        </table>
+
+        <!-- Graphique géométrique interactif -->
+        <div class="graph-wrap">
+          <div class="graph-title">📊 Visualisation interactive <span class="gtag">Glisse le curseur</span></div>
+          <canvas id="canvasGeom" height="220"></canvas>
+          <div class="graph-controls">
+            <label>Premier terme \(v_0\) : <input type="range" id="sliderV0" min="1" max="10" value="2" step="1"> <span id="valV0">2</span></label>
+            <label>Raison \(q\) : <input type="range" id="sliderQ" min="-25" max="30" value="15" step="1"> <span id="valQ">1.5</span></label>
+          </div>
+          <div class="graph-legend">
+            <div class="legend-item"><div class="legend-dot" style="background:#27ae60"></div> Termes \(v_n\)</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#eafaf1; border:2px solid #27ae60"></div> Croissance exponentielle</div>
+          </div>
+        </div>
+
+        <div class="callout callout-warn">
+          <div class="callout-label">⚠️ Piège classique</div>
+          <p>Ne pas confondre la <strong>raison</strong> \(q\) (multiplicateur) avec la <strong>raison</strong> \(r\) (ajout) d'une suite arithmétique. Les deux mots désignent des notions différentes selon le type de suite.</p>
+        </div>
+      </div>
+
+      <!-- 4. Comparaison arithmétique / géométrique -->
+      <div class="lesson-block">
+        <h2><span class="h2-num">4</span> Comparaison et reconnaissance</h2>
+
+        <table class="math-table">
+          <tr><th></th><th>Suite arithmétique</th><th>Suite géométrique</th></tr>
+          <tr><td><strong>Relation de récurrence</strong></td><td>\(u_{n+1} = u_n + r\)</td><td>\(u_{n+1} = q \cdot u_n\)</td></tr>
+          <tr><td><strong>Terme général</strong></td><td>\(u_n = u_0 + nr\)</td><td>\(u_n = u_0 \cdot q^n\)</td></tr>
+          <tr><td><strong>Comment reconnaître</strong></td><td>\(u_{n+1} - u_n = \text{constante}\)</td><td>\(\dfrac{u_{n+1}}{u_n} = \text{constante}\)</td></tr>
+          <tr><td><strong>Croissance</strong></td><td>Linéaire</td><td>Exponentielle</td></tr>
+        </table>
+
+        <div class="callout callout-prop">
+          <div class="callout-label">Propriété — Reconnaissance</div>
+          <p>Pour montrer qu'une suite est arithmétique, calculez \(u_{n+1} - u_n\) et vérifiez que le résultat est une constante (indépendante de \(n\)).<br>
+          Pour montrer qu'une suite est géométrique, calculez \(\dfrac{u_{n+1}}{u_n}\) et vérifiez que le résultat est une constante.</p>
+        </div>
+      </div>
+
+      <!-- 5. Sens de variation par récurrence -->
+      <div class="lesson-block">
+        <h2><span class="h2-num">5</span> Étude du sens de variation</h2>
+
+        <p>Pour étudier le sens de variation d'une suite quelconque, deux méthodes principales :</p>
+
+        <div class="callout callout-prop">
+          <div class="callout-label">Méthode 1 — Signe de \(u_{n+1} - u_n\)</div>
+          <p>
+            • Si \(u_{n+1} - u_n > 0\) pour tout \(n\) : suite <strong>croissante</strong>.<br>
+            • Si \(u_{n+1} - u_n < 0\) pour tout \(n\) : suite <strong>décroissante</strong>.
+          </p>
+        </div>
+
+        <div class="callout callout-prop">
+          <div class="callout-label">Méthode 2 — Rapport \(u_{n+1} / u_n\) (termes strictement positifs)</div>
+          <p>
+            • Si \(\dfrac{u_{n+1}}{u_n} > 1\) pour tout \(n\) : suite <strong>croissante</strong>.<br>
+            • Si \(\dfrac{u_{n+1}}{u_n} < 1\) pour tout \(n\) : suite <strong>décroissante</strong>.
+          </p>
+        </div>
+
+        <div class="callout callout-tip">
+          <div class="callout-label">💡 Conseil</div>
+          <p>La méthode du rapport est souvent plus efficace quand les termes sont des produits ou des puissances. La méthode de la différence est plus universelle.</p>
+        </div>
+
+        <!-- Graphique comparaison arithmétique vs géométrique -->
+        <div class="graph-wrap">
+          <div class="graph-title">🔍 Comparaison arithmétique vs géométrique <span class="gtag">Même départ, évolutions très différentes</span></div>
+          <canvas id="canvasCompare" height="240"></canvas>
+          <div class="graph-legend" style="margin-top:.8rem">
+            <div class="legend-item"><div class="legend-dot" style="background:#4a9fd4"></div> Arithmétique : \(u_n = 2 + 3n\) (raison \(r=3\))</div>
+            <div class="legend-item"><div class="legend-dot" style="background:#e74c3c"></div> Géométrique : \(v_n = 2 \times 1{,}5^n\) (raison \(q=1{,}5\))</div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /panel-cours -->
+
+    <!-- ═══════ EXERCICES ═══════ -->
+    <div class="tab-panel" id="panel-exercices">
+
+      <!-- Ex 1 -->
+      <div class="exercise" id="ex1">
+        <div class="exercise-header" onclick="toggleEx('ex1')">
+          <div class="exercise-header-left">
+            <div class="ex-num">1</div>
+            <div>
+              <div class="exercise-title">Identifier et calculer le terme général</div>
+              <div style="margin-top:.3rem;"><span class="diff-badge diff-easy">Facile</span></div>
+            </div>
+          </div>
+          <span class="toggle-icon">▼</span>
+        </div>
+        <div class="exercise-body">
+          <div class="exercise-statement">
+            <p>On considère la suite \((u_n)\) définie par \(u_0 = 3\) et \(u_{n+1} = u_n + 5\) pour tout \(n \in \mathbb{N}\).</p>
+            <ol>
+              <li>Montrer que \((u_n)\) est une suite arithmétique et préciser sa raison.</li>
+              <li>Donner l'expression de \(u_n\) en fonction de \(n\).</li>
+              <li>Calculer \(u_{10}\) et \(u_{100}\).</li>
+            </ol>
+          </div>
+          <button class="correction-btn" onclick="toggleCorrection('corr1')">👁 Voir la correction</button>
+          <div class="correction" id="corr1">
+            <div class="correction-label">✅ Correction</div>
+            <ol>
+              <li>On a \(u_{n+1} - u_n = (u_n + 5) - u_n = 5\), constante indépendante de \(n\). Donc \((u_n)\) est arithmétique de raison \(r = 5\).</li>
+              <li>Par la formule du terme général : \(u_n = u_0 + n \cdot r = 3 + 5n\).</li>
+              <li>\(u_{10} = 3 + 5 \times 10 = 53\) &nbsp;et&nbsp; \(u_{100} = 3 + 5 \times 100 = 503\).</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ex 2 -->
+      <div class="exercise" id="ex2">
+        <div class="exercise-header" onclick="toggleEx('ex2')">
+          <div class="exercise-header-left">
+            <div class="ex-num">2</div>
+            <div>
+              <div class="exercise-title">Suite géométrique et somme</div>
+              <div style="margin-top:.3rem;"><span class="diff-badge diff-medium">Intermédiaire</span></div>
+            </div>
+          </div>
+          <span class="toggle-icon">▼</span>
+        </div>
+        <div class="exercise-body">
+          <div class="exercise-statement">
+            <p>On considère la suite \((v_n)\) définie par \(v_0 = 2\) et \(v_{n+1} = 3v_n\) pour tout \(n \in \mathbb{N}\).</p>
+            <ol>
+              <li>Montrer que \((v_n)\) est géométrique et préciser sa raison.</li>
+              <li>Exprimer \(v_n\) en fonction de \(n\).</li>
+              <li>Calculer \(S = v_0 + v_1 + v_2 + \cdots + v_5\).</li>
+            </ol>
+          </div>
+          <button class="correction-btn" onclick="toggleCorrection('corr2')">👁 Voir la correction</button>
+          <div class="correction" id="corr2">
+            <div class="correction-label">✅ Correction</div>
+            <ol>
+              <li>Pour tout \(n \in \mathbb{N}\), on a \(\dfrac{v_{n+1}}{v_n} = \dfrac{3v_n}{v_n} = 3\), constante. Donc \((v_n)\) est géométrique de raison \(q = 3\).</li>
+              <li>\(v_n = v_0 \cdot q^n = 2 \times 3^n\).</li>
+              <li>Formule de la somme avec \(q = 3 \neq 1\) et 6 termes (\(n\) de 0 à 5) :
+              \[S = v_0 \cdot \frac{1 - q^6}{1 - q} = 2 \times \frac{1 - 3^6}{1 - 3} = 2 \times \frac{1 - 729}{-2} = 2 \times \frac{-728}{-2} = 2 \times 364 = 728\]</li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ex 3 -->
+      <div class="exercise" id="ex3">
+        <div class="exercise-header" onclick="toggleEx('ex3')">
+          <div class="exercise-header-left">
+            <div class="ex-num">3</div>
+            <div>
+              <div class="exercise-title">Sens de variation d'une suite quelconque</div>
+              <div style="margin-top:.3rem;"><span class="diff-badge diff-hard">Difficile</span></div>
+            </div>
+          </div>
+          <span class="toggle-icon">▼</span>
+        </div>
+        <div class="exercise-body">
+          <div class="exercise-statement">
+            <p>Soit \((w_n)\) la suite définie pour tout \(n \geq 1\) par \(w_n = \dfrac{n+2}{n}\).</p>
+            <ol>
+              <li>Calculer \(w_1\), \(w_2\) et \(w_3\). Émettre une conjecture sur le sens de variation.</li>
+              <li>Étudier rigoureusement le sens de variation en calculant \(w_{n+1} - w_n\) et en étudiant son signe.</li>
+            </ol>
+          </div>
+          <button class="correction-btn" onclick="toggleCorrection('corr3')">👁 Voir la correction</button>
+          <div class="correction" id="corr3">
+            <div class="correction-label">✅ Correction</div>
+            <ol>
+              <li>
+                \(w_1 = \dfrac{3}{1} = 3\), &nbsp; \(w_2 = \dfrac{4}{2} = 2\), &nbsp; \(w_3 = \dfrac{5}{3} \approx 1{,}67\).<br>
+                La suite semble <strong>décroissante</strong>.
+              </li>
+              <li>
+                Calculons \(w_{n+1} - w_n\) :
+                \[w_{n+1} - w_n = \frac{(n+1)+2}{n+1} - \frac{n+2}{n} = \frac{n+3}{n+1} - \frac{n+2}{n}\]
+                On réduit au même dénominateur \(n(n+1)\) :
+                \[= \frac{n(n+3) - (n+2)(n+1)}{n(n+1)} = \frac{n^2+3n - (n^2+3n+2)}{n(n+1)} = \frac{-2}{n(n+1)}\]
+                Pour \(n \geq 1\), \(n(n+1) > 0\), donc \(w_{n+1} - w_n = \dfrac{-2}{n(n+1)} < 0\).<br>
+                Donc \((w_n)\) est <strong>strictement décroissante</strong>.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+      <!-- Ex 4 -->
+      <div class="exercise" id="ex4">
+        <div class="exercise-header" onclick="toggleEx('ex4')">
+          <div class="exercise-header-left">
+            <div class="ex-num">4</div>
+            <div>
+              <div class="exercise-title">Suite arithmético-géométrique</div>
+              <div style="margin-top:.3rem;"><span class="diff-badge diff-challenge">Défi</span></div>
+            </div>
+          </div>
+          <span class="toggle-icon">▼</span>
+        </div>
+        <div class="exercise-body">
+          <div class="exercise-statement">
+            <p>Soit \((u_n)\) la suite définie par \(u_0 = 1\) et \(u_{n+1} = 2u_n + 3\) pour tout \(n \in \mathbb{N}\).</p>
+            <ol>
+              <li>Vérifier que \((u_n)\) n'est ni arithmétique ni géométrique.</li>
+              <li>On pose \(v_n = u_n + k\) où \(k\) est un réel à déterminer pour que \((v_n)\) soit géométrique. Trouver \(k\) et la raison de \((v_n)\).</li>
+              <li>En déduire l'expression de \(u_n\) en fonction de \(n\).</li>
+              <li>Étudier le sens de variation de \((u_n)\).</li>
+            </ol>
+          </div>
+          <button class="correction-btn" onclick="toggleCorrection('corr4')">👁 Voir la correction</button>
+          <div class="correction" id="corr4">
+            <div class="correction-label">✅ Correction</div>
+            <ol>
+              <li>
+                \(u_1 = 2 \times 1 + 3 = 5\), \(u_2 = 2 \times 5 + 3 = 13\).<br>
+                Différences : \(u_1 - u_0 = 4\) et \(u_2 - u_1 = 8\) — pas constantes, donc <strong>pas arithmétique</strong>.<br>
+                Rapports : \(\tfrac{u_1}{u_0} = 5\) et \(\tfrac{u_2}{u_1} = \tfrac{13}{5}\) — pas constants, donc <strong>pas géométrique</strong>.
+              </li>
+              <li>
+                On calcule \(v_{n+1} = u_{n+1} + k = 2u_n + 3 + k = 2(v_n - k) + 3 + k = 2v_n + (3 - k)\).<br>
+                Pour que \((v_n)\) soit géométrique de raison \(2\), il faut \(3 - k = 0\), soit \(\boxed{k = 3}\).<br>
+                Alors \(v_{n+1} = 2v_n\) : \((v_n)\) est géométrique de raison \(q = 2\).
+              </li>
+              <li>
+                \(v_0 = u_0 + 3 = 4\) et \(v_n = 4 \times 2^n = 2^{n+2}\).<br>
+                Donc \(\boxed{u_n = 2^{n+2} - 3}\).
+              </li>
+              <li>
+                \(u_{n+1} - u_n = (2^{n+3} - 3) - (2^{n+2} - 3) = 2^{n+2}(2 - 1) = 2^{n+2} > 0\) pour tout \(n \in \mathbb{N}\).<br>
+                Donc \((u_n)\) est <strong>strictement croissante</strong>.
+              </li>
+            </ol>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /panel-exercices -->
+
+    <!-- ═══════ QUIZ ═══════ -->
+    <div class="tab-panel" id="panel-quiz">
+
+      <div class="quiz-intro" id="quiz-intro">
+        <div>
+          <h3>🎯 Quiz — Suites numériques</h3>
+          <p>7 questions pour tester ta maîtrise du chapitre.</p>
+        </div>
+        <div class="quiz-stats">
+          <div class="quiz-stat"><div class="quiz-stat-num">7</div><div class="quiz-stat-label">Questions</div></div>
+          <div class="quiz-stat"><div class="quiz-stat-num">~6</div><div class="quiz-stat-label">Minutes</div></div>
+        </div>
+        <button class="btn-start" onclick="startQuiz()">Commencer →</button>
+      </div>
+
+      <div id="quiz-container">
+        <div class="quiz-progress-bar"><div class="quiz-progress-fill" id="quizProgress"></div></div>
+
+        <!-- Q1 -->
+        <div class="question-card current" id="q1">
+          <div class="question-num">Question 1 / 7</div>
+          <div class="question-text">La suite \((u_n)\) est définie par \(u_0 = 4\) et \(u_{n+1} = u_n - 3\). Quelle est la valeur de \(u_4\) ?</div>
+          <div class="options">
+            <div class="option" data-correct="false" data-feedback="Non — on soustrait 3 à chaque étape : \(u_1=1,\; u_2=-2,\; u_3=-5,\; u_4=-8\)."><span class="option-letter">A</span> \(-5\)</div>
+            <div class="option" data-correct="true"  data-feedback="Exact ! \(u_1=1,\; u_2=-2,\; u_3=-5,\; u_4=-8\). La raison est \(r=-3\) et \(u_4 = 4 + 4\times(-3) = -8\)."><span class="option-letter">B</span> \(-8\)</div>
+            <div class="option" data-correct="false" data-feedback="Non — on part de \(u_0 = 4\), pas de \(u_1\)."><span class="option-letter">C</span> \(-11\)</div>
+            <div class="option" data-correct="false" data-feedback="Non — la suite est décroissante puisque \(r = -3 < 0\)."><span class="option-letter">D</span> \(16\)</div>
+          </div>
+          <div class="feedback-box" id="fb-q1"></div>
+        </div>
+
+        <!-- Q2 -->
+        <div class="question-card" id="q2">
+          <div class="question-num">Question 2 / 7</div>
+          <div class="question-text">Comment reconnaît-on qu'une suite est géométrique ?</div>
+          <div class="options">
+            <div class="option" data-correct="false" data-feedback="Non — c'est la propriété d'une suite arithmétique : la différence \(u_{n+1}-u_n\) est constante."><span class="option-letter">A</span> La différence \(u_{n+1} - u_n\) est constante</div>
+            <div class="option" data-correct="true"  data-feedback="Exact ! Le rapport \(u_{n+1}/u_n\) est constant et égal à la raison \(q\)."><span class="option-letter">B</span> Le rapport \(u_{n+1}/u_n\) est constant</div>
+            <div class="option" data-correct="false" data-feedback="Non — une suite peut être croissante sans être géométrique."><span class="option-letter">C</span> Les termes sont tous positifs et croissants</div>
+            <div class="option" data-correct="false" data-feedback="Non — le terme général \(u_n = u_0 \cdot q^n\) est une conséquence, pas la définition."><span class="option-letter">D</span> Le terme général est de la forme \(u_n = n^2\)</div>
+          </div>
+          <div class="feedback-box" id="fb-q2"></div>
+        </div>
+
+        <!-- Q3 -->
+        <div class="question-card" id="q3">
+          <div class="question-num">Question 3 / 7</div>
+          <div class="question-text">Une suite arithmétique a pour premier terme \(u_1 = 7\) et pour raison \(r = -2\). Quelle est la formule du terme général \(u_n\) ?</div>
+          <div class="options">
+            <div class="option" data-correct="false" data-feedback="Non — attention, ici le premier terme donné est \(u_1\) et non \(u_0\). On a \(u_n = u_1 + (n-1) \times r\)."><span class="option-letter">A</span> \(u_n = 7 - 2n\)</div>
+            <div class="option" data-correct="true"  data-feedback="Exact ! Puisque le premier terme est \(u_1\), on utilise \(u_n = u_1 + (n-1)r = 7 + (n-1)\times(-2) = 9 - 2n\)."><span class="option-letter">B</span> \(u_n = 9 - 2n\)</div>
+            <div class="option" data-correct="false" data-feedback="Non — la raison est négative, la suite est décroissante."><span class="option-letter">C</span> \(u_n = 7 + 2n\)</div>
+            <div class="option" data-correct="false" data-feedback="Non — il ne faut pas multiplier par \(n\) mais ajouter \((n-1)\times r\)."><span class="option-letter">D</span> \(u_n = 7 \times (-2)^n\)</div>
+          </div>
+          <div class="feedback-box" id="fb-q3"></div>
+        </div>
+
+        <!-- Q4 -->
+        <div class="question-card" id="q4">
+          <div class="question-num">Question 4 / 7</div>
+          <div class="question-text">Soit la suite géométrique \((v_n)\) avec \(v_0 = 5\) et \(q = 2\). Quelle est la valeur de \(v_6\) ?</div>
+          <div class="options">
+            <div class="option" data-correct="false" data-feedback="Non — \(v_6 = 5 \times 2^6 = 5 \times 64 = 320\), pas \(60\)."><span class="option-letter">A</span> \(60\)</div>
+            <div class="option" data-correct="false" data-feedback="Non — \(2^6 = 64\), pas \(12\)."><span class="option-letter">B</span> \(160\)</div>
+            <div class="option" data-correct="true"  data-feedback="Exact ! \(v_6 = v_0 \times q^6 = 5 \times 2^6 = 5 \times 64 = 320\)."><span class="option-letter">C</span> \(320\)</div>
+            <div class="option" data-correct="false" data-feedback="Non — on multiplie par \(q^6\), pas par \(q^7\)."><span class="option-letter">D</span> \(640\)</div>
+          </div>
+          <div class="feedback-box" id="fb-q4"></div>
+        </div>
+
+        <!-- Q5 -->
+        <div class="question-card" id="q5">
+          <div class="question-num">Question 5 / 7</div>
+          <div class="question-text">La suite \((u_n)\) définie par \(u_n = 3 \times (-1)^n\) est :</div>
+          <div class="options">
+            <div class="option" data-correct="false" data-feedback="Non — les termes alternent entre \(3\) et \(-3\), la suite n'est pas monotone."><span class="option-letter">A</span> Croissante</div>
+            <div class="option" data-correct="false" data-feedback="Non — les termes alternent entre \(3\) et \(-3\), la suite n'est pas monotone."><span class="option-letter">B</span> Décroissante</div>
+            <div class="option" data-correct="false" data-feedback="Non — \(u_0=3\) et \(u_1=-3\), les termes ne sont pas constants."><span class="option-letter">C</span> Constante</div>
+            <div class="option" data-correct="true"  data-feedback="Exact ! \(u_0=3,\; u_1=-3,\; u_2=3,\ldots\) La suite alterne et n'est ni croissante ni décroissante. C'est une suite géométrique de raison \(q=-1\)."><span class="option-letter">D</span> Ni croissante ni décroissante (alternée)</div>
+          </div>
+          <div class="feedback-box" id="fb-q5"></div>
+        </div>
+
+        <!-- Q6 -->
+        <div class="question-card" id="q6">
+          <div class="question-num">Question 6 / 7</div>
+          <div class="question-text">On souhaite calculer \(S = 1 + 2 + 3 + \cdots + 50\). Quelle est la bonne formule à utiliser ?</div>
+          <div class="options">
+            <div class="option" data-correct="false" data-feedback="Non — la somme des entiers de 1 à \(n\) ne vaut pas \(n^2\)."><span class="option-letter">A</span> \(S = 50^2 = 2500\)</div>
+            <div class="option" data-correct="true"  data-feedback="Exact ! C'est une suite arithmétique de premier terme 1 et dernier terme 50, avec 50 termes. \(S = 50 \times \frac{1+50}{2} = 50 \times 25{,}5 = 1275\)."><span class="option-letter">B</span> \(S = 50 \times \dfrac{1 + 50}{2} = 1275\)</div>
+            <div class="option" data-correct="false" data-feedback="Non — \(50 \times 51 = 2550 \neq 1275\). Tu as oublié de diviser par 2."><span class="option-letter">C</span> \(S = 50 \times 51 = 2550\)</div>
+            <div class="option" data-correct="false" data-feedback="Non — la formule géométrique ne s'applique pas ici, ce n'est pas une suite géométrique."><span class="option-letter">D</span> \(S = \dfrac{1 - 2^{50}}{1 - 2}\)</div>
+          </div>
+          <div class="feedback-box" id="fb-q6"></div>
+        </div>
+
+        <!-- Q7 -->
+        <div class="question-card" id="q7">
+          <div class="question-num">Question 7 / 7</div>
+          <div class="question-text">La suite \((w_n)\) définie par \(w_n = \dfrac{2n+1}{n+3}\) est-elle monotone pour \(n \geq 0\) ?</div>
+          <div class="options">
+            <div class="option" data-correct="true"  data-feedback="Exact ! On calcule \(w_{n+1} - w_n = \frac{2(n+1)+1}{(n+1)+3} - \frac{2n+1}{n+3} = \frac{2n+3}{n+4} - \frac{2n+1}{n+3}\). En réduisant : numérateur \(= (2n+3)(n+3)-(2n+1)(n+4) = 5 > 0\). Donc la suite est strictement croissante."><span class="option-letter">A</span> Oui, elle est strictement croissante</div>
+            <div class="option" data-correct="false" data-feedback="Non — calculez \(w_{n+1} - w_n\) : le résultat est positif."><span class="option-letter">B</span> Oui, elle est strictement décroissante</div>
+            <div class="option" data-correct="false" data-feedback="Non — elle est monotone (croissante). Calculez \(w_{n+1} - w_n\)."><span class="option-letter">C</span> Non, elle n'est pas monotone</div>
+            <div class="option" data-correct="false" data-feedback="Non — on peut étudier sa monotonie en calculant \(w_{n+1} - w_n\)."><span class="option-letter">D</span> On ne peut pas le déterminer</div>
+          </div>
+          <div class="feedback-box" id="fb-q7"></div>
+        </div>
+
+        <div class="quiz-nav">
+          <button class="btn-next" id="btn-next" onclick="nextQuestion()">Question suivante →</button>
+        </div>
+      </div>
+
+      <div id="quiz-result">
+        <div class="score-ring" id="scoreRing">
+          <div class="score-num" id="scoreNum">0</div>
+          <div class="score-total">/ 7</div>
+        </div>
+        <h3 id="result-title"></h3>
+        <p id="result-msg"></p>
+        <button class="btn-retry" onclick="restartQuiz()">🔄 Recommencer le quiz</button>
+      </div>
+
+    </div><!-- /panel-quiz -->
+
+  </main>
+</div>
+
+<script>
+  // ── GRAPHIQUES CANVAS ─────────────────────────────────
+  function resizeCanvas(canvas) {
+    const rect = canvas.parentElement.getBoundingClientRect();
+    canvas.width  = rect.width - 48; // padding
+    canvas.height = parseInt(canvas.getAttribute('height'));
+  }
+
+  // Palette
+  const C_BLUE  = '#4a9fd4';
+  const C_GREEN = '#27ae60';
+  const C_RED   = '#e74c3c';
+  const C_GRID  = '#e8f4fd';
+  const C_AXIS  = '#1a2e4a';
+  const C_TEXT  = '#5a6a80';
+
+  function drawAxes(ctx, W, H, pad, xMin, xMax, yMin, yMax) {
+    ctx.clearRect(0, 0, W, H);
+    const scX = x => pad + (x - xMin) / (xMax - xMin) * (W - 2*pad);
+    const scY = y => H - pad - (y - yMin) / (yMax - yMin) * (H - 2*pad);
+
+    // Grid
+    ctx.strokeStyle = C_GRID; ctx.lineWidth = 1;
+    for (let x = Math.ceil(xMin); x <= xMax; x++) {
+      ctx.beginPath(); ctx.moveTo(scX(x), pad); ctx.lineTo(scX(x), H-pad); ctx.stroke();
+    }
+    for (let y = Math.ceil(yMin); y <= yMax; y += Math.ceil((yMax-yMin)/6)) {
+      ctx.beginPath(); ctx.moveTo(pad, scY(y)); ctx.lineTo(W-pad, scY(y)); ctx.stroke();
+    }
+
+    // Axes
+    ctx.strokeStyle = C_AXIS; ctx.lineWidth = 1.5;
+    const y0 = Math.max(yMin, Math.min(yMax, 0));
+    const x0 = Math.max(xMin, Math.min(xMax, 0));
+    ctx.beginPath(); ctx.moveTo(pad, scY(y0)); ctx.lineTo(W-pad, scY(y0)); ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(scX(x0), pad); ctx.lineTo(scX(x0), H-pad); ctx.stroke();
+
+    // Labels
+    ctx.fillStyle = C_TEXT; ctx.font = '11px DM Sans, sans-serif'; ctx.textAlign = 'center';
+    for (let x = Math.ceil(xMin); x <= xMax; x++) {
+      if (x === 0) continue;
+      ctx.fillText(x, scX(x), scY(y0) + 16);
+    }
+    ctx.textAlign = 'right';
+    for (let y = Math.ceil(yMin); y <= yMax; y += Math.ceil((yMax-yMin)/6)) {
+      if (Math.abs(y) < 0.01) continue;
+      ctx.fillText(Math.round(y*10)/10, scX(x0) - 6, scY(y) + 4);
+    }
+
+    // n label
+    ctx.fillStyle = C_AXIS; ctx.font = 'bold 12px Nunito, sans-serif'; ctx.textAlign = 'left';
+    ctx.fillText('n', W - pad + 4, scY(y0) + 4);
+
+    return { scX, scY };
+  }
+
+  function plotDots(ctx, scX, scY, points, color, r=5) {
+    points.forEach(([x, y]) => {
+      ctx.beginPath();
+      ctx.arc(scX(x), scY(y), r, 0, Math.PI*2);
+      ctx.fillStyle = color;
+      ctx.fill();
+      ctx.strokeStyle = '#fff'; ctx.lineWidth = 1.5;
+      ctx.stroke();
+    });
+  }
+
+  function plotLine(ctx, scX, scY, points, color, dash=[]) {
+    ctx.beginPath(); ctx.setLineDash(dash);
+    ctx.strokeStyle = color; ctx.lineWidth = 1.5;
+    points.forEach(([x,y], i) => i === 0 ? ctx.moveTo(scX(x), scY(y)) : ctx.lineTo(scX(x), scY(y)));
+    ctx.stroke(); ctx.setLineDash([]);
+  }
+
+  // ── Graphique 1 : Suite arithmétique ─────────────────
+  function drawArith() {
+    const canvas = document.getElementById('canvasArith');
+    if (!canvas) return;
+    resizeCanvas(canvas);
+    const W = canvas.width, H = canvas.height, pad = 45;
+    const ctx = canvas.getContext('2d');
+    const u0 = parseInt(document.getElementById('sliderU0').value);
+    const r  = parseInt(document.getElementById('sliderR').value);
+    document.getElementById('valU0').textContent = u0;
+    document.getElementById('valR').textContent  = r;
+
+    const N = 8;
+    const pts = Array.from({length: N}, (_, n) => [n, u0 + n*r]);
+    const ys  = pts.map(p => p[1]);
+    const yMin = Math.min(...ys, 0) - 2;
+    const yMax = Math.max(...ys, 0) + 3;
+
+    const {scX, scY} = drawAxes(ctx, W, H, pad, -0.5, N-0.5, yMin, yMax);
+    plotLine(ctx, scX, scY, pts, C_BLUE + '55', [6,4]);
+    plotDots(ctx, scX, scY, pts, C_BLUE);
+
+    // Value labels above dots
+    ctx.fillStyle = C_BLUE; ctx.font = 'bold 11px DM Sans, sans-serif'; ctx.textAlign = 'center';
+    pts.forEach(([x,y]) => {
+      ctx.fillText(y, scX(x), scY(y) - 10);
+    });
+  }
+
+  // ── Graphique 2 : Suite géométrique ──────────────────
+  function drawGeom() {
+    const canvas = document.getElementById('canvasGeom');
+    if (!canvas) return;
+    resizeCanvas(canvas);
+    const W = canvas.width, H = canvas.height, pad = 50;
+    const ctx = canvas.getContext('2d');
+    const v0  = parseInt(document.getElementById('sliderV0').value);
+    const qRaw = parseInt(document.getElementById('sliderQ').value);
+    const q   = qRaw / 10; // slider 15 => q=1.5
+    document.getElementById('valV0').textContent = v0;
+    document.getElementById('valQ').textContent  = q.toFixed(1);
+
+    const N = 7;
+    const pts = Array.from({length: N}, (_, n) => [n, v0 * Math.pow(q, n)]);
+    const ys  = pts.map(p => p[1]);
+    const yMin = Math.min(...ys, 0) - 1;
+    const yMax = Math.max(...ys, 0) + Math.abs(Math.max(...ys)) * 0.15 + 1;
+
+    const {scX, scY} = drawAxes(ctx, W, H, pad, -0.5, N-0.5, yMin, yMax);
+
+    // Smooth curve
+    const curveX = Array.from({length: 100}, (_, i) => -0.5 + i * (N/(100)));
+    const curvePts = curveX.map(x => [x, v0 * Math.pow(q, x)]);
+    plotLine(ctx, scX, scY, curvePts.filter(([,y]) => y >= yMin && y <= yMax), C_GREEN + '55', []);
+    plotDots(ctx, scX, scY, pts.filter(([,y]) => y >= yMin && y <= yMax), C_GREEN);
+
+    ctx.fillStyle = C_GREEN; ctx.font = 'bold 11px DM Sans, sans-serif'; ctx.textAlign = 'center';
+    pts.filter(([,y]) => y >= yMin+1 && y <= yMax-1).forEach(([x,y]) => {
+      ctx.fillText(Math.round(y*100)/100, scX(x), scY(y) - 10);
+    });
+  }
+
+  // ── Graphique 3 : Comparaison arithmétique vs géométrique
+  function drawCompare() {
+    const canvas = document.getElementById('canvasCompare');
+    if (!canvas) return;
+    resizeCanvas(canvas);
+    const W = canvas.width, H = canvas.height, pad = 50;
+    const ctx = canvas.getContext('2d');
+
+    const N = 8;
+    const arith = Array.from({length: N}, (_, n) => [n, 2 + 3*n]);
+    const geom  = Array.from({length: N}, (_, n) => [n, 2 * Math.pow(1.5, n)]);
+
+    const allY = [...arith.map(p=>p[1]), ...geom.map(p=>p[1])];
+    const yMax = Math.max(...allY) + 3;
+
+    const {scX, scY} = drawAxes(ctx, W, H, pad, -0.5, N-0.5, -1, yMax);
+
+    plotLine(ctx, scX, scY, arith, C_BLUE + '88', [6,4]);
+    plotDots(ctx, scX, scY, arith, C_BLUE);
+
+    const curvePts = Array.from({length:100}, (_,i) => {
+      const x = -0.5 + i * (N/100);
+      return [x, 2 * Math.pow(1.5, x)];
+    });
+    plotLine(ctx, scX, scY, curvePts, C_RED + '66');
+    plotDots(ctx, scX, scY, geom, C_RED);
+
+    // Annotation "dépasse ici"
+    const crossIdx = arith.findIndex(([n, u], i) => geom[i] && geom[i][1] > u);
+    if (crossIdx > 0) {
+      const cx = scX(crossIdx);
+      ctx.strokeStyle = '#f0b429'; ctx.lineWidth = 1; ctx.setLineDash([4,3]);
+      ctx.beginPath(); ctx.moveTo(cx, pad); ctx.lineTo(cx, H-pad); ctx.stroke();
+      ctx.setLineDash([]);
+      ctx.fillStyle = '#a07800'; ctx.font = 'bold 10px DM Sans, sans-serif'; ctx.textAlign = 'center';
+      ctx.fillText('géom. dépasse', cx, pad + 12);
+    }
+  }
+
+  // Init & resize
+  function initGraphs() {
+    drawArith();
+    drawGeom();
+    drawCompare();
+  }
+
+  window.addEventListener('load', initGraphs);
+  window.addEventListener('resize', initGraphs);
+
+  document.addEventListener('DOMContentLoaded', () => {
+    ['sliderU0','sliderR'].forEach(id => document.getElementById(id)?.addEventListener('input', drawArith));
+    ['sliderV0','sliderQ'].forEach(id => document.getElementById(id)?.addEventListener('input', drawGeom));
+  });
+  function switchTab(name) {
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    document.getElementById('panel-' + name).classList.add('active');
+    document.getElementById('tab-' + name).classList.add('active');
+    renderMathInElement(document.getElementById('panel-' + name), katexOpts);
+  }
+
+  // ── EXERCICES ─────────────────────────────────────────
+  function toggleEx(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('open');
+    if (el.classList.contains('open')) renderMathInElement(el, katexOpts);
+  }
+
+  function toggleCorrection(id) {
+    const el = document.getElementById(id);
+    el.classList.toggle('visible');
+    el.previousElementSibling.textContent = el.classList.contains('visible') ? '🙈 Masquer la correction' : '👁 Voir la correction';
+    if (el.classList.contains('visible')) renderMathInElement(el, katexOpts);
+  }
+
+  // ── QUIZ ──────────────────────────────────────────────
+  const QUESTIONS = ['q1','q2','q3','q4','q5','q6','q7'];
+  let current = 0;
+  let score   = 0;
+  let answered = false;
+
+  function startQuiz() {
+    document.getElementById('quiz-intro').style.display = 'none';
+    document.getElementById('quiz-container').style.display = 'block';
+    updateProgress();
+    // Attach click handlers
+    QUESTIONS.forEach(qid => {
+      document.querySelectorAll('#' + qid + ' .option').forEach(opt => {
+        opt.addEventListener('click', function() {
+          handleAnswer(this, qid);
+        });
+      });
+    });
+  }
+
+  function handleAnswer(el, qid) {
+    if (answered) return;
+    answered = true;
+
+    const isCorrect = el.dataset.correct === 'true';
+    const feedback  = el.dataset.feedback;
+
+    // Disable & mark all options in this question
+    document.querySelectorAll('#' + qid + ' .option').forEach(opt => {
+      opt.classList.add('disabled');
+      opt.style.pointerEvents = 'none';
+      if (opt.dataset.correct === 'true') {
+        opt.classList.add('show-correct'); // always highlight correct
+        opt.querySelector('.option-letter').style.background = 'var(--green)';
+        opt.querySelector('.option-letter').style.color = 'white';
+      }
+    });
+
+    // Mark the chosen option
+    if (isCorrect) {
+      el.classList.add('correct');
+      score++;
+    } else {
+      el.classList.add('wrong');
+    }
+
+    // Feedback
+    const fb = document.getElementById('fb-' + qid);
+    fb.textContent = (isCorrect ? '✅ ' : '❌ ') + feedback;
+    fb.className   = 'feedback-box ' + (isCorrect ? 'correct' : 'wrong');
+
+    renderMathInElement(fb, katexOpts);
+
+    // Show next button
+    const btn = document.getElementById('btn-next');
+    btn.classList.add('visible');
+    btn.textContent = current + 1 < QUESTIONS.length ? 'Question suivante →' : 'Voir mon score →';
+  }
+
+  function updateProgress() {
+    const pct = Math.round((current / QUESTIONS.length) * 100);
+    document.getElementById('quizProgress').style.width = pct + '%';
+  }
+
+  function nextQuestion() {
+    current++;
+    answered = false;
+    document.querySelectorAll('.question-card').forEach(c => c.classList.remove('current'));
+    document.getElementById('btn-next').classList.remove('visible');
+
+    if (current < QUESTIONS.length) {
+      const card = document.getElementById(QUESTIONS[current]);
+      card.classList.add('current');
+      updateProgress();
+      renderMathInElement(card, katexOpts);
+    } else {
+      showResult();
+    }
+  }
+
+  function showResult() {
+    document.getElementById('quiz-container').style.display = 'none';
+    const result = document.getElementById('quiz-result');
+    result.style.display = 'block';
+
+    document.getElementById('scoreNum').textContent = score;
+
+    const pct = score / QUESTIONS.length;
+    let cls, title, msg;
+
+    if (pct >= 6/7) {
+      cls = 'score-excellent'; title = 'Excellent ! 🎉';
+      msg = 'Tu maîtrises très bien les suites numériques. Continue sur cette lancée !';
+    } else if (pct >= 0.5) {
+      cls = 'score-good'; title = 'Beau travail !';
+      msg = 'Tu as de solides bases. Relis les notions où tu as hésité, puis retente.';
+    } else {
+      cls = 'score-retry'; title = 'À retravailler';
+      msg = 'Relis attentivement le cours, fais les exercices corrigés, puis relance le quiz.';
+    }
+
+    document.getElementById('scoreRing').className = 'score-ring ' + cls;
+    document.getElementById('result-title').textContent = title;
+    document.getElementById('result-msg').textContent   = msg;
+
+    // Barre de progression sidebar
+    const pctDisplay = Math.round(pct * 100) + '%';
+    document.getElementById('progressPct').textContent      = pctDisplay;
+    document.getElementById('progressFill').style.width     = pctDisplay;
+  }
+
+  function restartQuiz() {
+    current = 0; score = 0; answered = false;
+
+    QUESTIONS.forEach(qid => {
+      const card = document.getElementById(qid);
+      card.classList.remove('current');
+      card.querySelectorAll('.option').forEach(o => {
+        o.className = 'option';
+        o.style.pointerEvents = '';
+        const letter = o.querySelector('.option-letter');
+        letter.style.background = '';
+        letter.style.color = '';
+        o.addEventListener('click', function() { handleAnswer(this, qid); });
+      });
+      const fb = document.getElementById('fb-' + qid);
+      if (fb) fb.className = 'feedback-box';
+    });
+
+    document.getElementById('quiz-result').style.display  = 'none';
+    document.getElementById('quiz-container').style.display = 'block';
+    document.getElementById(QUESTIONS[0]).classList.add('current');
+    document.getElementById('btn-next').classList.remove('visible');
+    updateProgress();
+  }
+</script>
+  <script>
+    const katexOpts = {
+      delimiters: [
+        {left: '\\[', right: '\\]', display: true},
+        {left: '\\(', right: '\\)', display: false},
+        {left: '$', right: '$', display: false}
+      ],
+      throwOnError: false,
+      output: 'html'
+    };
+    document.addEventListener('DOMContentLoaded', () => {
+      renderMathInElement(document.body, katexOpts);
+    });
+  </script>
+</body>
+</html>
