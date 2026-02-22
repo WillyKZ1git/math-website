@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MathCoach — Progresser en maths, à son rythme</title>
+    <meta name="description" content="MathCoach : exercices interactifs, parcours personnalisés et suivi de progression pour maîtriser les mathématiques du collège au lycée.">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="container nav-container">
+            <a href="/" class="logo">
+                <span class="logo-icon">&#960;</span>
+                <span class="logo-text">MathCoach</span>
+            </a>
+            <ul class="nav-links" id="nav-links">
+                <li><a href="#fonctionnalites">Fonctionnalités</a></li>
+                <li><a href="#niveaux">Niveaux</a></li>
+                <li><a href="#methode">Méthode</a></li>
+                <li><a href="#temoignages">Témoignages</a></li>
+            </ul>
+            <div class="nav-actions">
+                <a href="#" class="btn btn-ghost">Connexion</a>
+                <a href="#" class="btn btn-primary">Commencer</a>
+            </div>
+            <button class="menu-toggle" id="menu-toggle" aria-label="Ouvrir le menu">
+                <span></span>
+                <span></span>
+                <span></span>
+            </button>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <header class="hero">
+        <div class="container hero-container">
+            <div class="hero-content">
+                <h1>Les maths deviennent <span class="highlight">simples</span> quand on a le bon coach</h1>
+                <p class="hero-subtitle">Des exercices interactifs, un parcours adapté à ton niveau et un suivi intelligent de ta progression. Du collège au lycée.</p>
+                <div class="hero-cta">
+                    <a href="#" class="btn btn-primary btn-lg">Commencer gratuitement</a>
+                    <a href="#methode" class="btn btn-outline btn-lg">Voir comment ça marche</a>
+                </div>
+                <div class="hero-stats">
+                    <div class="stat">
+                        <span class="stat-number">500+</span>
+                        <span class="stat-label">Exercices</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">12</span>
+                        <span class="stat-label">Chapitres</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-number">100%</span>
+                        <span class="stat-label">Gratuit</span>
+                    </div>
+                </div>
+            </div>
+            <div class="hero-visual">
+                <div class="math-card card-1">
+                    <div class="card-header">Équation du 2nd degré</div>
+                    <div class="card-equation">x² - 5x + 6 = 0</div>
+                    <div class="card-steps">
+                        <div class="step done">&#10003; Calcul du discriminant</div>
+                        <div class="step active">&#9654; Trouver les racines</div>
+                        <div class="step">Vérification</div>
+                    </div>
+                    <div class="card-progress">
+                        <div class="progress-bar" style="width: 66%"></div>
+                    </div>
+                </div>
+                <div class="math-card card-2">
+                    <div class="card-badge">+15 XP</div>
+                    <div class="card-equation small">cos²(x) + sin²(x) = 1</div>
+                    <div class="card-result correct">Bonne réponse !</div>
+                </div>
+                <div class="math-card card-3">
+                    <div class="card-header">Progression</div>
+                    <div class="mini-chart">
+                        <div class="bar accent" style="height: 40%"></div>
+                        <div class="bar accent" style="height: 55%"></div>
+                        <div class="bar" style="height: 45%"></div>
+                        <div class="bar accent" style="height: 70%"></div>
+                        <div class="bar accent" style="height: 85%"></div>
+                        <div class="bar" style="height: 75%"></div>
+                        <div class="bar accent" style="height: 95%"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Features Section -->
+    <section class="features" id="fonctionnalites">
+        <div class="container">
+            <div class="section-header">
+                <h2>Tout ce qu'il faut pour progresser</h2>
+                <p>Une plateforme pensée pour rendre les maths accessibles et motivantes.</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path>
+                            <path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path>
+                        </svg>
+                    </div>
+                    <h3>Cours structurés</h3>
+                    <p>Des leçons claires et progressives, avec les notions essentielles expliquées simplement.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline>
+                        </svg>
+                    </div>
+                    <h3>Exercices interactifs</h3>
+                    <p>Résous des problèmes étape par étape avec une correction détaillée instantanée.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="12" y1="20" x2="12" y2="10"></line>
+                            <line x1="18" y1="20" x2="18" y2="4"></line>
+                            <line x1="6" y1="20" x2="6" y2="16"></line>
+                        </svg>
+                    </div>
+                    <h3>Suivi de progression</h3>
+                    <p>Visualise tes progrès chapitre par chapitre et identifie tes points forts et faibles.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"></circle>
+                            <path d="M8 14s1.5 2 4 2 4-2 4-2"></path>
+                            <line x1="9" y1="9" x2="9.01" y2="9"></line>
+                            <line x1="15" y1="9" x2="15.01" y2="9"></line>
+                        </svg>
+                    </div>
+                    <h3>Parcours adaptatif</h3>
+                    <p>L'algorithme s'adapte à ton niveau et te propose les exercices les plus pertinents.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"></polygon>
+                        </svg>
+                    </div>
+                    <h3>Système de récompenses</h3>
+                    <p>Gagne des points d'expérience, débloque des badges et reste motivé au quotidien.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon">
+                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="3" width="20" height="14" rx="2" ry="2"></rect>
+                            <line x1="8" y1="21" x2="16" y2="21"></line>
+                            <line x1="12" y1="17" x2="12" y2="21"></line>
+                        </svg>
+                    </div>
+                    <h3>Accessible partout</h3>
+                    <p>Sur ordinateur, tablette ou téléphone — entraîne-toi où tu veux, quand tu veux.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Levels Section -->
+    <section class="levels" id="niveaux">
+    <div class="container">
+        <div class="section-header">
+            <h2>De la seconde à la terminale</h2>
+            <p>Choisis ton niveau et commence ton parcours personnalisé.</p>
+        </div>
+        <div class="levels-grid">
+            <div class="level-card">
+                <div class="level-badge">2nde</div>
+                <h3>Seconde</h3>
+                <ul class="level-topics">
+                    <li>Nombres et calculs</li> <li>Fonctions de référence</li> <li>Vecteurs et Droites</li> <li>Statistiques et Probabilités</li> <li>Algorithmique Python</li> </ul>
+                <a href="#" class="btn btn-outline">Explorer</a>
+            </div>
+
+            <div class="level-card featured">
+                <div class="level-popular">Populaire</div>
+                <div class="level-badge">1ère</div>
+                <h3>Première Spé</h3>
+                <ul class="level-topics">
+                    <li>Suites numériques</li> <li>Second degré et Dérivation</li> <li>Fonction Exponentielle</li> <li>Produit scalaire et Trigonométrie</li> <li>Probabilités conditionnelles</li> </ul>
+                <a href="#" class="btn btn-primary">Explorer</a>
+            </div>
+
+            <div class="level-card">
+                <div class="level-badge">Tle</div>
+                <h3>Terminale Spé</h3>
+                <ul class="level-topics">
+                    <li>Limites et Continuité (TVI)</li> <li>Logarithme Néperien</li> <li>Primitives et calcul intégral</li> <li>Géométrie dans l'espace</li> <li>Combinatoire et Dénombrement</li> </ul>
+                <a href="#" class="btn btn-outline">Explorer</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+    <!-- Method Section -->
+    <section class="method" id="methode">
+        <div class="container">
+            <div class="section-header">
+                <h2>Comment ça marche ?</h2>
+                <p>Trois étapes pour progresser efficacement.</p>
+            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-number">1</div>
+                    <h3>Évalue ton niveau</h3>
+                    <p>Un test diagnostic rapide identifie tes acquis et tes lacunes pour construire ton parcours sur mesure.</p>
+                </div>
+                <div class="step-connector">
+                    <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
+                        <path d="M0 12h32M28 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">2</div>
+                    <h3>Entraîne-toi</h3>
+                    <p>Résous des exercices progressifs avec des indices et des corrections détaillées à chaque étape.</p>
+                </div>
+                <div class="step-connector">
+                    <svg width="40" height="24" viewBox="0 0 40 24" fill="none">
+                        <path d="M0 12h32M28 6l6 6-6 6" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+                    </svg>
+                </div>
+                <div class="step-card">
+                    <div class="step-number">3</div>
+                    <h3>Progresse</h3>
+                    <p>Suis ta courbe de progression, revois les notions difficiles et consolide tes acquis au fil du temps.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials" id="temoignages">
+        <div class="container">
+            <div class="section-header">
+                <h2>Ils progressent avec MathCoach</h2>
+                <p>Des élèves qui ont transformé leur rapport aux mathématiques.</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                    </div>
+                    <blockquote>
+                        &laquo; J'avais 8 de moyenne en maths en seconde. Grâce aux exercices progressifs de MathCoach, j'ai fini l'année à 14. Le système d'indices m'a vraiment aidé à comprendre ma démarche. &raquo;
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">L</div>
+                        <div>
+                            <div class="author-name">Lucas, 16 ans</div>
+                            <div class="author-detail">Élève en Seconde</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                    </div>
+                    <blockquote>
+                        &laquo; Ma fille utilise MathCoach tous les soirs 20 minutes. Elle a repris confiance en elle et ose enfin participer en cours. Le suivi de progression est très bien fait. &raquo;
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div>
+                            <div class="author-name">Sophie, parent</div>
+                            <div class="author-detail">Maman d'une élève en 3e</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card">
+                    <div class="testimonial-stars">
+                        <span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span><span>&#9733;</span>
+                    </div>
+                    <blockquote>
+                        &laquo; Je recommande MathCoach à mes élèves en difficulté. Les exercices sont bien calibrés et la correction étape par étape reproduit ce qu'un bon prof ferait en cours particulier. &raquo;
+                    </blockquote>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">M</div>
+                        <div>
+                            <div class="author-name">M. Durand</div>
+                            <div class="author-detail">Professeur de mathématiques</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="cta-box">
+                <h2>Prêt à progresser en maths ?</h2>
+                <p>Rejoins MathCoach gratuitement et commence ton premier exercice en moins d'une minute.</p>
+                <a href="#" class="btn btn-primary btn-lg">Créer mon compte gratuit</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="/" class="logo">
+                        <span class="logo-icon">&#960;</span>
+                        <span class="logo-text">MathCoach</span>
+                    </a>
+                    <p>La plateforme qui rend les maths accessibles à tous les élèves, du collège au lycée.</p>
+                </div>
+                <div class="footer-links">
+                    <h4>Plateforme</h4>
+                    <ul>
+                        <li><a href="#">Exercices</a></li>
+                        <li><a href="#">Cours</a></li>
+                        <li><a href="#">Progression</a></li>
+                        <li><a href="#">Tarifs</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>Niveaux</h4>
+                    <ul>
+                        <li><a href="#">Collège (6e-3e)</a></li>
+                        <li><a href="#">Seconde</a></li>
+                        <li><a href="#">Première</a></li>
+                        <li><a href="#">Terminale</a></li>
+                    </ul>
+                </div>
+                <div class="footer-links">
+                    <h4>À propos</h4>
+                    <ul>
+                        <li><a href="#">Notre mission</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Mentions légales</a></li>
+                        <li><a href="#">Confidentialité</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2026 MathCoach. Tous droits réservés.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/main.js"></script>
+</body>
+</html>
